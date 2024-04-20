@@ -1,4 +1,4 @@
-package controllers;
+package controllers.uber;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,7 +41,7 @@ public class HomeUber {
        tCourseEnCours.setOnAction(event->redirectToCoursesEnCours());
         btnHistorique.setOnAction(event->redirectToHistoriqueCourses());
         tAncienne.setOnAction(event->redirectToHistoriqueCourses());
-
+        tAdmin.setOnAction(event->redirectToDashboard());
 
     }
 
@@ -49,7 +49,7 @@ public class HomeUber {
         System.out.println("Redirection vers la page de réservation...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/reservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/reservation.fxml"));
             Parent root = loader.load();
             ReservationCourse reservationController = loader.getController();
             if (reservationController == null) {
@@ -84,7 +84,7 @@ public class HomeUber {
         System.out.println("Redirection vers la page de courses en cours...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/coursesEnCours.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/coursesEnCours.fxml"));
             Parent root = loader.load();
             CourseEnCours courseEnCoursController = loader.getController();
             if (courseEnCoursController == null) {
@@ -116,7 +116,7 @@ public class HomeUber {
         System.out.println("Redirection vers la page de historique Courses...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/historiqueTrajets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/historiqueTrajets.fxml"));
             Parent root = loader.load();
             HistoriqueTrajets historiqueTrajetsController= loader.getController();
             if (historiqueTrajetsController == null) {
@@ -145,25 +145,25 @@ public class HomeUber {
     }
 
 
-   /* private void redirectToDashboard() {
+ private void redirectToDashboard() {
         System.out.println("Redirection vers le dashboard...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dash/admin.fxml"));
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
             Parent root = loader.load();
-            CourseEnCours courseEnCoursController = loader.getController();
-            if (courseEnCoursController == null) {
-                System.out.println("Erreur: Impossible de charger le contrôleur de la page de courses en cours.");
+            AdminController adminController = loader.getController();
+            if (adminController == null) {
+                System.out.println("Erreur: Impossible de charger le contrôleur de la page d admin.");
                 return;
             }
 
             Scene scene = new Scene(root);
             Stage stage;
-            if (btnCoursesEnCours != null) {
-                stage = (Stage) btnCoursesEnCours.getScene().getWindow();
-            } else if (tCourseEnCours != null) {
-                stage = (Stage) tCourseEnCours.getScene().getWindow();
-            } else {
+            if (tAdmin != null) {
+                stage = (Stage) tAdmin.getScene().getWindow();
+            }
+             else {
                 System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
                 return;
             }
@@ -177,5 +177,12 @@ public class HomeUber {
         }
     }
 
-*/
-}
+
+
+    }
+
+
+
+
+
+

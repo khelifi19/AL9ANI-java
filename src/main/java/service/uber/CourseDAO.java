@@ -1,9 +1,9 @@
-package service;
+package service.uber;
 
-import modeles.Course;
-import modeles.Voiture;
+import modeles.uber.Course;
+import modeles.uber.Voiture;
 import utils.DBConnection;
-import view.ICourse;
+import view.uber.ICourse;
 
 import java.sql.*;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.uber;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import modeles.Course;
-import modeles.Voiture;
-import service.CourseDAO;
-import service.VoitureDAO;
+import modeles.uber.Course;
+import modeles.uber.Voiture;
+import service.uber.CourseDAO;
+import service.uber.VoitureDAO;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -131,7 +131,7 @@ public class ReservationCourse {
 
         // Redirection vers le paiement.fxml
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/payement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/payement.fxml"));
             Parent root = loader.load();
             PayerCourse paymentController = loader.getController();
 
@@ -163,7 +163,7 @@ public class ReservationCourse {
         System.out.println("Redirection vers la page d'accueil...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/homeUber.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/homeUber.fxml"));
             Parent root = loader.load();
             HomeUber accueilController = loader.getController();
             if (accueilController == null) {
@@ -195,7 +195,7 @@ public class ReservationCourse {
         System.out.println("Redirection vers la page des courses en cours...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/coursesEnCours.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/coursesEnCours.fxml"));
             Parent root = loader.load();
             CourseEnCours courseEnCoursController = loader.getController();
             if (courseEnCoursController == null) {
@@ -218,7 +218,7 @@ public class ReservationCourse {
         System.out.println("Redirection vers la page de l'historique des courses...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/historiqueTrajets.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/historiqueTrajets.fxml"));
             Parent root = loader.load();
             HistoriqueTrajets historiqueTrajetsController = loader.getController();
             if (historiqueTrajetsController == null) {

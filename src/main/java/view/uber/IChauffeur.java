@@ -1,6 +1,6 @@
-package view;
+package view.uber;
 
-import modeles.Chauffeur;
+import modeles.uber.Chauffeur;
 import java.util.List;
 
 public interface IChauffeur {

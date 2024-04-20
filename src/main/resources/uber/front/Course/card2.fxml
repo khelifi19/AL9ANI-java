@@ -53,7 +53,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/ajouter-un-panier.png" />
+                              <Image url="@../../dash/Img/ajouter-un-panier.png" />
                            </image>
                         </ImageView>
                      </graphic>

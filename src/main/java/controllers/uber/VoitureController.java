@@ -1,4 +1,4 @@
-package controllers;
+package controllers.uber;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -11,13 +11,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
-import modeles.Chauffeur;
-import modeles.Voiture;
-import service.ChauffeurDAO;
-import service.VoitureDAO;
+import modeles.uber.Chauffeur;
+import modeles.uber.Voiture;
+import service.uber.ChauffeurDAO;
+import service.uber.VoitureDAO;
 
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

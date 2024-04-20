@@ -1,4 +1,4 @@
-package modeles;
+package modeles.uber;
 
 import java.util.List;
 

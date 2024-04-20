@@ -53,7 +53,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/supprimer.png" />
+                              <Image url="@../../dash/Img/supprimer.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -62,7 +62,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/update.png" />
+                              <Image url="@../../dash/Img/update.png" />
                            </image>
                         </ImageView>
                      </graphic>

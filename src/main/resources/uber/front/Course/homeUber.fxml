@@ -71,7 +71,7 @@
                         <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="91.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/c.jpeg" />
+                              <Image url="@../../dash/Img/c.jpeg" />
                            </image>
                            <HBox.margin>
                               <Insets right="10.0" />
@@ -138,7 +138,7 @@
                      <children>
                         <ImageView fitHeight="197.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/a.jpeg" />
+                              <Image url="@../../dash/Img/a.jpeg" />
                            </image>
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />
@@ -170,7 +170,7 @@
                      <children>
                         <ImageView fitHeight="197.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/a.jpeg" />
+                              <Image url="@../../dash/Img/a.jpeg" />
                            </image>
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />
@@ -202,7 +202,7 @@
                      <children>
                         <ImageView fitHeight="197.0" fitWidth="274.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/a.jpeg" />
+                              <Image url="@../../dash/Img/a.jpeg" />
                            </image>
                            <VBox.margin>
                               <Insets left="50.0" top="20.0" />

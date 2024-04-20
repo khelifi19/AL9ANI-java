@@ -1,19 +1,16 @@
-package controllers;
+package controllers.uber;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import modeles.Course;
-import service.CourseDAO;
+import modeles.uber.Course;
+import service.uber.CourseDAO;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,7 +61,7 @@ public class HistoriqueTrajets {
         List<Course> historique = historique();
         for (Course course : historique) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/front/Course/card2.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/uber/front/Course/card2.fxml"));
                 HBox carBox = fxmlLoader.load();
                 Card cardController = fxmlLoader.getController();
                 cardController.setData(course);
@@ -110,7 +107,7 @@ public class HistoriqueTrajets {
         System.out.println("Redirection vers la page d'accueil...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/homeUber.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/homeUber.fxml"));
             Parent root = loader.load();
             HomeUber accueilController = loader.getController();
             if (accueilController == null) {
@@ -140,7 +137,7 @@ public class HistoriqueTrajets {
             System.out.println("Redirection vers la page des courses en cours...");
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/coursesEnCours.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/coursesEnCours.fxml"));
                 Parent root = loader.load();
                 CourseEnCours courseEnCoursController = loader.getController();
                 if (courseEnCoursController == null) {
@@ -163,7 +160,7 @@ public class HistoriqueTrajets {
             System.out.println("Redirection vers la page de l'historique des courses...");
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/historiqueTrajets.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/historiqueTrajets.fxml"));
                 Parent root = loader.load();
                 HistoriqueTrajets historiqueTrajetsController = loader.getController();
                 if (historiqueTrajetsController == null) {
@@ -186,7 +183,7 @@ public class HistoriqueTrajets {
         System.out.println("Redirection vers la page de réservation...");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Course/reservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/front/Course/reservation.fxml"));
             Parent root = loader.load();
             ReservationCourse reservationController = loader.getController();
             if (reservationController == null) {

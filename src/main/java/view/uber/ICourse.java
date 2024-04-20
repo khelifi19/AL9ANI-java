@@ -1,6 +1,6 @@
-package view;
+package view.uber;
 
-import modeles.Course;
+import modeles.uber.Course;
 
 
 import java.util.List;

@@ -71,7 +71,7 @@
                         <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="91.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dashg/c.jpeg" />
+                              <Image url="@../../dash/Img/c.jpeg" />
                            </image>
                            <HBox.margin>
                               <Insets right="10.0" />

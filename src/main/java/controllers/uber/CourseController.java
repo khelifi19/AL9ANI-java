@@ -1,4 +1,4 @@
-package controllers;
+package controllers.uber;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -6,9 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import modeles.Course;
-import modeles.Voiture;
-import service.CourseDAO;
+import modeles.uber.Course;
+import modeles.uber.Voiture;
+import service.uber.CourseDAO;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

@@ -1,9 +1,9 @@
-package service;
+package service.uber;
 
-import modeles.Chauffeur;
-import modeles.Voiture;
+import modeles.uber.Chauffeur;
+import modeles.uber.Voiture;
 import utils.DBConnection;
-import view.IVoiture;
+import view.uber.IVoiture;
 
 import java.sql.*;
 import java.util.ArrayList;

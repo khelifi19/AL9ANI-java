@@ -1,7 +1,5 @@
-package controllers;
+package controllers.uber;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,8 +8,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
-import modeles.Chauffeur;
-import service.ChauffeurDAO;
+import modeles.uber.Chauffeur;
+import service.uber.ChauffeurDAO;
 
 import java.util.List;
 import java.util.Optional;

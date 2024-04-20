@@ -1,6 +1,6 @@
-package view;
+package view.uber;
 
-import modeles.Voiture;
+import modeles.uber.Voiture;
 import java.util.List;
 public interface IVoiture {
 

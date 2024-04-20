@@ -1,4 +1,4 @@
-
+package test;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +11,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Charger le fichier FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/dash/voiture.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/uber/front/Course/homeUber.fxml"));
 
         // Définir le contenu de la scène
         Scene scene = new Scene(root);
 
         // Définir le titre de la fenêtre
-        primaryStage.setTitle("Gestion des Voitures");
+        primaryStage.setTitle("al9ani");
 
         // Définir la scène dans la fenêtre principale
         primaryStage.setScene(scene);

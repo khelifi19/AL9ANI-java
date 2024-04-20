@@ -1,11 +1,9 @@
-package controllers;
+package controllers.uber;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import modeles.Course;
-import test.Main;
+import modeles.uber.Course;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

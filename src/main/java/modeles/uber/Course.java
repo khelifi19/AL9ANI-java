@@ -1,6 +1,4 @@
-package modeles;
-
-import javafx.collections.ObservableList;
+package modeles.uber;
 
 import java.time.LocalDateTime;
 
