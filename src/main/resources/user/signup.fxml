@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.SignUpController">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane fx:id="loginForm" layoutX="314.0" prefHeight="415.0" prefWidth="320.0" styleClass="white-form" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="103.0" layoutX="123.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/al9aniwhite.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="error_labelS1" layoutX="54.0" layoutY="190.0" text="." textFill="#d01616" visible="false">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="signIn" layoutX="68.0" layoutY="251.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="185.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Sign In" textFill="WHITE" />
+                  <TextField fx:id="tf_username" layoutX="39.0" layoutY="115.0" prefHeight="33.0" prefWidth="242.0" promptText="UserName">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="38.0" layoutY="72.0" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Login Account" textFill="#f41b3b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="tf_password" layoutX="39.0" layoutY="157.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" />
+                  <CheckBox fx:id="rememberMeCheckbox" layoutX="39.0" layoutY="197.0" mnemonicParsing="false" text="Remember Me" textFill="#f41b3b" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="signUpForm" layoutY="-2.0" prefHeight="415.0" prefWidth="320.0" styleClass="white-form" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-2.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="103.0" layoutX="116.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/al9aniwhite.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="error_labelS" layoutX="45.0" layoutY="302.0" text="." textFill="#d01616" visible="false">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="signUpS" layoutX="85.0" layoutY="329.0" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="138.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Sign Up" textFill="WHITE" />
+                  <TextField fx:id="lastNameFieldS" layoutX="33.0" layoutY="148.0" prefHeight="33.0" prefWidth="242.0" promptText="Last Name">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="tf_usernameS" layoutX="33.0" layoutY="189.0" prefHeight="33.0" prefWidth="242.0" promptText="UserName">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="emailFieldS" layoutX="33.0" layoutY="230.0" prefHeight="33.0" prefWidth="242.0" promptText="Email">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="FirstNameS" layoutX="33.0" layoutY="108.0" prefHeight="33.0" prefWidth="242.0" promptText="First Name" styleClass="text-field" stylesheets="@signUpstyle.css">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="33.0" layoutY="71.0" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Register Account" textFill="#f41b3b">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="tf_passwordS" layoutX="33.0" layoutY="269.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="sideForm" prefHeight="415.0" prefWidth="334.0" styleClass="gradient" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="sideButton" layoutX="77.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchLogin" prefHeight="28.0" prefWidth="168.0" style="-fx-cursor: hand;" styleClass="create-btn" stylesheets="@signUpstyle.css" text="Create new Account" AnchorPane.bottomAnchor="53.0">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="sideButton1" layoutX="77.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchLogin" prefHeight="28.0" prefWidth="168.0" style="-fx-cursor: hand;" styleClass="create-btn" stylesheets="@signUpstyle.css" text="Already have an Account" visible="false">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="222.0" fitWidth="228.0" layoutX="36.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/list.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

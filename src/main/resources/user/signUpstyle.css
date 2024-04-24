@@ -1,0 +1,41 @@
+.head_logo{
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+    -fx-border-color: #f41b3b;
+}
+.gradient{
+    -fx-background-color: linear-gradient(to bottom right,#F87689,#F0F2F5);
+
+}
+.white-form{
+    -fx-background-color: #fff;
+}
+.signup-btn{
+    -fx-background-color: linear-gradient(to bottom right,#f41b3b,#FAA3B0) ;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+.signup-btn:hover{
+    -fx-background-color: linear-gradient(to bottom right, #ff374d, #ffc3cd) ;
+}
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right,#ff374d,#ffc3cd);
+    -fx-border-width: .5px;
+}
+.text-field:focused{
+    -fx-border-width: 1px;
+}
+.create-btn{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #ff374d;
+    -fx-border-color: #ff374d;
+    -fx-border-width: 1px;
+}
+.create-btn:hover{
+    -fx-background-color: linear-gradient(to bottom right,#f41b3b,#FAA3B0) ;
+-fx-text-fill: #fff;
+}

@@ -1,0 +1,21 @@
+.myDialog {
+    -fx-border-color: #f41b3b;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #f6f6f6;
+}
+
+.myDialog .label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.myDialog .button {
+    -fx-font-size: 14px;
+    -fx-text-fill: #f6f6f6;
+    -fx-background-color: #f41b3b;
+}
+
+.myDialog .button:hover {
+    -fx-background-color: #c41b1b;
+}
