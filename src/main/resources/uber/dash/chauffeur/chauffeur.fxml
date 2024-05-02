@@ -20,6 +20,7 @@
       <ToolBar layoutY="-5.0" prefHeight="70.0" prefWidth="761.0" style="-fx-background-color: #EAECEE;">
          <items>
             <ImageView fitHeight="43.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnRetour" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../front/Course/style.css" text="Retour" />
          </items>
       </ToolBar>
       <VBox layoutY="57.0" prefHeight="613.0" prefWidth="150.0" style="-fx-background-color: #EAECEE;">
@@ -55,7 +56,7 @@
             </ToggleButton>
          </children>
       </VBox>
-      <TableView fx:id="tableViewChauffeurs" layoutX="259.0" layoutY="276.0" prefHeight="319.0" prefWidth="678.0">
+      <TableView fx:id="tableViewChauffeurs" layoutX="230.0" layoutY="277.0" prefHeight="319.0" prefWidth="776.0">
          <columns>
             <TableColumn fx:id="tNom" prefWidth="75.0" text="Nom " />
             <TableColumn fx:id="tPrenom" prefWidth="95.5" text="Prenom" />
@@ -63,7 +64,7 @@
             <TableColumn fx:id="tNumero" prefWidth="95.5" text="Numero" />
             <TableColumn fx:id="tSalaire" prefWidth="95.5" text="Salaire" />
             <TableColumn fx:id="tVille" prefWidth="95.5" text="Ville" />
-            <TableColumn fx:id="tActions" prefWidth="75.0" text="Actions" />
+            <TableColumn fx:id="tActions" minWidth="-1.0" prefWidth="130.0" text="Actions" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

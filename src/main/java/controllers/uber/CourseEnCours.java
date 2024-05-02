@@ -11,6 +11,7 @@ import modeles.uber.Course;
 import service.uber.CourseDAO;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,8 @@ public class CourseEnCours {
     @FXML
     private Button ajouterBtn;
 
-
+    @FXML
+    private DatePicker btnDate;
 
     @FXML
     private Button tAncienne;
@@ -50,6 +52,10 @@ private List<Course> enCours;
         tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
         tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
         ajouterBtn.setOnAction(event -> redirectToReservation());
+        btnDate.setOnAction(event -> {
+            LocalDate selectedDate = btnDate.getValue();
+            filterCoursesByDate(selectedDate);
+        });
 
         refreshCardLayout();
     }
@@ -240,6 +246,36 @@ private List<Course> enCours;
             e.printStackTrace();
             System.out.println("Erreur lors de la redirection vers la page de modification de la course: " + e.getMessage());
         }
+    }
+
+
+    private void filterCoursesByDate(LocalDate selectedDate) {
+        // Vider le layout des cartes
+        cardLayoot.getChildren().clear();
+
+        // Récupérer les courses à filtrer
+        List<Course> courses = enCours();
+
+        // Filtrer les courses
+        for (Course course : courses) {
+            LocalDate courseDate = LocalDate.from(course.getDate()); // Supposons que vous avez une méthode getDate() dans la classe Course
+            if (courseDate != null && !courseDate.isBefore(selectedDate)) {
+                // Si la date de la course est supérieure ou égale à la date sélectionnée, l'ajouter à l'affichage
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/uber/front/Course/card.fxml"));
+                    HBox carBox = fxmlLoader.load();
+                    Card cardController = fxmlLoader.getController();
+                    cardController.setData(course);
+                    cardLayoot.getChildren().add(carBox);
+                    carBox.getProperties().put("controller", cardController);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // Configurer les boutons d'action pour les nouvelles cartes
+        setupActionButtonsCellFactory();
     }
 
 

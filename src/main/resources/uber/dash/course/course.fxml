@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,11 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.uber.CourseController">
+<AnchorPane prefHeight="680.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.uber.CourseController">
    <children>
-      <ToolBar layoutX="10.0" layoutY="5.0" prefHeight="70.0" prefWidth="761.0" style="-fx-background-color: #EAECEE;">
+      <ToolBar layoutX="10.0" layoutY="5.0" prefHeight="70.0" prefWidth="794.0" style="-fx-background-color: #EAECEE;">
          <items>
             <ImageView fitHeight="43.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnRetour" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../front/Course/style.css" text="Retour" />
          </items>
       </ToolBar>
       <VBox layoutX="10.0" layoutY="67.0" prefHeight="613.0" prefWidth="150.0" style="-fx-background-color: #EAECEE;">
@@ -52,7 +54,7 @@
             </ToggleButton>
          </children>
       </VBox>
-      <TableView fx:id="tableViewCourses" layoutX="216.0" layoutY="240.0" prefHeight="314.0" prefWidth="538.0">
+      <TableView fx:id="tableViewCourses" layoutX="239.0" layoutY="240.0" prefHeight="314.0" prefWidth="526.0">
          <columns>
             <TableColumn fx:id="tDestination" prefWidth="75.0" text="Destination" />
             <TableColumn fx:id="tDepart" prefWidth="75.0" text="Depart" />
@@ -69,5 +71,6 @@
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
+      <Button fx:id="btnCalender" layoutX="277.0" layoutY="568.0" mnemonicParsing="false" text="Calendrier" />
    </children>
 </AnchorPane>
