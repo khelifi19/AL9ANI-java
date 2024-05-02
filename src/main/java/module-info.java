@@ -1,4 +1,4 @@
-module com.example.al9ani {
+module al9ani {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
@@ -6,10 +6,9 @@ module com.example.al9ani {
     requires java.prefs;
 
 
-    opens com.example.al9ani to javafx.fxml;
-    exports com.example.al9ani;
 
-    exports controller.user;
-    opens controller.user to javafx.fxml;
+
+    exports controllers.user;
+    opens controllers.user to javafx.fxml;
 
 }

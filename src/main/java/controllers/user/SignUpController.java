@@ -1,4 +1,4 @@
-package controller.user;
+package controllers.user;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -168,7 +168,7 @@ public class SignUpController implements Initializable {
             } else {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/profilesetting.fxml"));
                 Parent root = loader.load();
-                ProfileSetting profileSetting = loader.getController();
+              ProfileSetting profileSetting = loader.getController();
                 profileSetting.setUserInformation(username);
                 profileSetting.setUserModel(newUser);
 

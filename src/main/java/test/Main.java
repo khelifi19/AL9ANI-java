@@ -1,4 +1,4 @@
-package com.example.al9ani;
+package test;
 
 import controller.user.ProfileSetting;
 import javafx.application.Application;
