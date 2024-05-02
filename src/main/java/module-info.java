@@ -4,8 +4,7 @@ module al9ani {
     requires java.sql;
     requires jbcrypt;
     requires java.prefs;
-
-
+    requires java.datatransfer;
 
 
     exports controllers.user;
