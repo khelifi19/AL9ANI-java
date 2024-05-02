@@ -3,13 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -41,7 +44,7 @@
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/utilisateur%20(1).png" />
+                              <Image url="@img/user.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="showB" mnemonicParsing="false" prefWidth="185.0" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@settingsStyle.css" text="Show Profile" textFill="#f41b3b">
@@ -79,6 +82,20 @@
                         </Button>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/pin-code%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="resetP" mnemonicParsing="false" prefWidth="185.0" style="-fx-background-color: transparent; -fx-cursor: hand;" stylesheets="@settingsStyle.css" text="Reset Password" textFill="#f41b3b">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
@@ -106,93 +123,207 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="50.0" BorderPane.alignment="CENTER">
+      <StackPane BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="head_logo" stylesheets="@signUpstyle.css" text="Profile Settings" textFill="#f41b3b">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="20.0" />
-               </font>
-            </Label>
-            <VBox alignment="CENTER_LEFT" prefHeight="433.0" prefWidth="780.0" spacing="30.0" style="-fx-border-color: f41b3b;">
+            <Pane fx:id="userInfoP" visible="false">
                <children>
-                  <Label alignment="TOP_CENTER" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Profile Details" textFill="#f41b3b">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
+                  <VBox prefHeight="740.0" prefWidth="878.0" spacing="50.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="112.0" text="FirstName" textFill="#f41b3b">
+                        <Label styleClass="head_logo" stylesheets="@signUpstyle.css" text="Profile Settings" textFill="#f41b3b">
                            <font>
-                              <Font size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <Pane prefHeight="35.0" prefWidth="156.0" />
-                        <TextField fx:id="firstNameU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font></TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="90.0" text="LastName" textFill="#f41b3b">
-                           <font>
-                              <Font size="16.0" />
+                              <Font name="Arial Rounded MT Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Pane prefHeight="35.0" prefWidth="173.0" />
-                        <TextField fx:id="LastNameU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font></TextField>
+                        <VBox alignment="CENTER_LEFT" prefHeight="433.0" prefWidth="780.0" spacing="30.0" style="-fx-border-color: f41b3b;">
+                           <children>
+                              <Label alignment="TOP_CENTER" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Profile Details" textFill="#f41b3b">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="25.0" prefWidth="112.0" text="FirstName" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="156.0" />
+                                    <TextField fx:id="firstNameU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
+                                       <font>
+                                          <Font name="Arial" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="90.0" text="LastName" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="173.0" />
+                                    <TextField fx:id="LastNameU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
+                                       <font>
+                                          <Font name="Arial" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="70.0" text="Email" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="191.0" />
+                                    <TextField fx:id="emailU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
+                                       <font>
+                                          <Font name="Arial" size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <InnerShadow height="255.0" radius="94.14750000000001" width="123.59">
+                                 <color>
+                                    <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </VBox>
+                        <HBox alignment="BOTTOM_CENTER">
+                           <children>
+                              <Button fx:id="Save" alignment="CENTER" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="303.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Update Profile" textFill="WHITE" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" prefHeight="35.0" prefWidth="780.0">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="70.0" text="Email" textFill="#f41b3b">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Pane prefHeight="35.0" prefWidth="191.0" />
-                        <TextField fx:id="emailU" alignment="CENTER" prefHeight="26.0" prefWidth="266.0" styleClass="text-field" stylesheets="@settingsStyle.css">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font></TextField>
-                     </children>
-                  </HBox>
+                     <padding>
+                        <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+                     </padding>
+                     <effect>
+                        <InnerShadow height="0.0" radius="0.0" width="0.0">
+                           <color>
+                              <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </VBox>
                </children>
-               <effect>
-                  <InnerShadow height="255.0" radius="94.14750000000001" width="123.59">
-                     <color>
-                        <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </VBox>
-            <HBox alignment="BOTTOM_CENTER">
+            </Pane>
+            <Pane fx:id="resetPassword" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="Save" alignment="CENTER" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="303.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Update Profile" textFill="WHITE" />
+                  <VBox prefHeight="740.0" prefWidth="878.0" spacing="50.0">
+                     <children>
+                        <Label styleClass="head_logo" stylesheets="@signUpstyle.css" text="Reset Password" textFill="#f41b3b">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="433.0" prefWidth="780.0" spacing="30.0" style="-fx-border-color: f41b3b;">
+                           <children>
+                              <Label alignment="TOP_CENTER" styleClass="head_logo" stylesheets="@signUpstyle.css" textFill="#f41b3b">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label fx:id="oldP" alignment="CENTER" prefHeight="25.0" prefWidth="112.0" text="old password" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="156.0" />
+                                    <PasswordField fx:id="oldPass" prefHeight="26.0" prefWidth="229.0" />
+                                    <AnchorPane />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label fx:id="newP" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="107.0" text="new password" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="163.0" />
+                                    <AnchorPane>
+                                       <children>
+                                          <TextField fx:id="newpshow" prefHeight="26.0" prefWidth="235.0" />
+                                          <PasswordField fx:id="newPass" prefHeight="26.0" prefWidth="232.0" visible="false" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane>
+                                       <children>
+                                          <ImageView fx:id="openEye" fitHeight="19.0" fitWidth="24.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/open_eye.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="closedEye" fitHeight="19.0" fitWidth="24.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                             <image>
+                                                <Image url="@img/closeeye.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" prefHeight="35.0" prefWidth="780.0">
+                                 <children>
+                                    <Label fx:id="Confirm" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="70.0" text="confirm" textFill="#f41b3b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane prefHeight="35.0" prefWidth="198.0" />
+                                    <PasswordField fx:id="confirmPass" prefHeight="26.0" prefWidth="241.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <effect>
+                              <InnerShadow height="255.0" radius="94.14750000000001" width="123.59">
+                                 <color>
+                                    <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </VBox>
+                        <HBox alignment="BOTTOM_CENTER">
+                           <children>
+                              <Button fx:id="reset" alignment="CENTER" mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="303.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Reset Password" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+                     </padding>
+                     <effect>
+                        <InnerShadow height="0.0" radius="0.0" width="0.0">
+                           <color>
+                              <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </VBox>
                </children>
-            </HBox>
+            </Pane>
          </children>
-         <padding>
-            <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
-         </padding>
-         <effect>
-            <InnerShadow height="0.0" radius="0.0" width="0.0">
-               <color>
-                  <Color red="0.95686274766922" green="0.10588235408067703" blue="0.23137255012989044" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </VBox>
+      </StackPane>
    </center>
 </BorderPane>

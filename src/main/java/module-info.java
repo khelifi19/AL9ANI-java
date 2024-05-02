@@ -1,10 +1,15 @@
-module al9ani {
-    requires javafx.graphics;
+module com.example.al9ani {
+    requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires javafx.controls;
+    requires jbcrypt;
+    requires java.prefs;
 
-    requires mysql.connector.j;
 
+    opens com.example.al9ani to javafx.fxml;
+    exports com.example.al9ani;
+
+    exports controller.user;
+    opens controller.user to javafx.fxml;
 
 }

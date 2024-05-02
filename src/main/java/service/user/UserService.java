@@ -11,6 +11,7 @@ import java.util.prefs.Preferences;
 
 public class UserService implements IService <UserModel>{
     private Connection connection;
+    public static UserModel currentlyLoggedInUser = null;
     private Preferences prefs = Preferences.userNodeForPackage(UserService.class);
     public void rememberUser(String username, String password) {
         prefs.put("username", username);
@@ -19,6 +20,27 @@ public class UserService implements IService <UserModel>{
     public void clearRememberedUser() {
         prefs.remove("username");
         prefs.remove("password");
+    }
+    public String autoLogin() {
+        String username = prefs.get("username", null);
+       // Assuming you store a hashed token instead of a plain password.
+
+        if (username != null ) {
+            try {
+                UserModel user = readUser(username);
+
+                // Here checkPassword should compare the hashed token with the hashed password stored in the database.
+                if (user != null ) {
+  currentlyLoggedInUser=user;
+
+                    return  user.getUsername();
+                }
+            } catch (SQLException e) {
+                showAlert(Alert.AlertType.ERROR, "Login Error", "An error occurred while trying to auto-login: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public UserService(Connection connection) {
@@ -36,6 +58,27 @@ public class UserService implements IService <UserModel>{
         String sql = "SELECT * FROM users WHERE username = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new UserModel(
+                            rs.getInt("id_user"),
+                            rs.getString("username"),
+                            rs.getString("email"),
+                            rs.getString("firstName"),
+                            rs.getString("lastName"),
+                            rs.getString("password")
+
+
+                    );
+                }
+            }
+        }
+        return null;
+    }
+    public UserModel readUserE(String email) throws SQLException {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return new UserModel(
@@ -78,12 +121,28 @@ public class UserService implements IService <UserModel>{
         }
     }
     public boolean checkIfUsernameExists(String username) {
-        String query = "SELECT * FROM users WHERE username = ?";
+        String query = "SELECT username FROM users WHERE username = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
-            System.out.println(resultSet.next());
-            return resultSet.next(); // Return true if username exists, false otherwise
+
+
+            return !resultSet.next();
+
+        } catch (SQLException e) {
+            System.err.println("Error while checking if username exists: " + e.getMessage());
+            return false;
+        }
+    }
+    public boolean checkIfEmailExists(String email) {
+        String query = "SELECT email FROM users WHERE email = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+
+
+            return !resultSet.next();
+
         } catch (SQLException e) {
             System.err.println("Error while checking if username exists: " + e.getMessage());
             return false;
@@ -105,6 +164,15 @@ public class UserService implements IService <UserModel>{
             System.err.println("Error while checking credentials: " + e.getMessage());
             return false;
         }
+    }
+    public void resetPassword(String newPassword)throws SQLException{
+            String hashedPassword = PasswordHasher.hashPassword(newPassword);
+            String sql = "UPDATE users SET password = ? WHERE id_user = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, hashedPassword);
+                ps.setInt(2, currentlyLoggedInUser.getuserId());
+                ps.executeUpdate();
+            }
     }
 
     public UserService() {

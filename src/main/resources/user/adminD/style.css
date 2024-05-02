@@ -1,18 +1,21 @@
 .button
 {
-    -fx-background-color : #05071F;
-    -fx-text-fill : #e7e5e5;
+    -fx-background-color :  #EBE8F9;
+    -fx-text-fill : black
+;
 }
 .button:hover{
-    -fx-background-color : #10165F;
+    -fx-background-color : #BDBBC3
+
+;
 }
 .button:pressed
 {
-    -fx-background-color : #1620A1;
+    -fx-background-color : #EBE8F9;
 }
 
 .scroll-pane {
-    -fx-background-color: #02030A;
+    -fx-background-color: #EBE8F9;
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
@@ -33,10 +36,10 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #10165F;
+    -fx-background-color: #ffc3cd;
     -fx-background-radius: 5em;
 }
 
 .scroll-pane > .corner {
-    -fx-background-color: black;
+    -fx-background-color: #ffc3cd;
 }

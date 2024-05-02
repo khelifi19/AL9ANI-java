@@ -1,12 +1,14 @@
-package controllers.user;
+package controller.user;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,11 +17,19 @@ import model.user.UserModel;
 import service.user.UserService;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class SignUpController {
+public class SignUpController implements Initializable {
     private UserModel userModel;
+    @FXML
+    private ImageView closedEye;
+    @FXML
+    private TextField newpshow;
 
+    @FXML
+    private ImageView openEye;
     @FXML
     private TextField FirstNameS;
 
@@ -66,6 +76,8 @@ public class SignUpController {
 
     @FXML
     private TextField tf_usernameS;
+    @FXML
+    private Hyperlink forgotPass;
     private double x, y;
     private final UserService us = new UserService();
 
@@ -77,65 +89,83 @@ public class SignUpController {
 
     @FXML
     public void signup(ActionEvent event) throws IOException {
+        // Retrieve user input
         String username = tf_usernameS.getText();
         String password = tf_passwordS.getText();
         String email = emailFieldS.getText();
         String firstName = FirstNameS.getText();
         String lastName = lastNameFieldS.getText();
 
-        // Email validation
+        // Validate email
         if (email.isEmpty() || !email.matches("^[\\w.-]+@esprit\\.tn$")) {
             us.showAlert(Alert.AlertType.ERROR, "Invalid Email", "Email must not be empty & end with @esprit.tn");
             return;
         }
 
-        // Password validation
-        if (password == null || password.length() < 3) {
-            us.showAlert(Alert.AlertType.ERROR, "Invalid Password", "Password must be at least 3 characters long");
+        // Validate password
+        if (password == null || password.length() < 6) {
+            us.showAlert(Alert.AlertType.ERROR, "Invalid Password", "Password must be at least 6 characters long");
             return;
         }
+
+        // Check if username exists and is not empty
         boolean check = us.checkIfUsernameExists(username);
-        if (!check && !username.isEmpty()) {
-            try {
-                UserModel newUser = new UserModel();
-                newUser.setFirstName(firstName);
-                newUser.setEmail(email);
-                newUser.setPassword(password);
-                newUser.setLastName(lastName);
-                newUser.setUsername(username);
-                us.create(newUser);
-                tf_passwordS.clear();
-                tf_usernameS.clear();
-                emailFieldS.clear();
-                lastNameFieldS.clear();
-                FirstNameS.clear();
-                if (newUser.getUsername().equals("admin")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/adminD/dashboard.fxml"));
-                    Parent root = null;
-                    try {
-                        root = loader.load();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+        if (username.isEmpty()) {
+            us.showAlert(Alert.AlertType.ERROR, "Invalid Username", "Username must not be empty");
+            return;
+        }
 
-                    Stage primaryStage = new Stage();
-                    primaryStage.setScene(new Scene(root));
+        // Create a new user model
+        UserModel newUser = new UserModel();
+        newUser.setFirstName(firstName);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.setLastName(lastName);
+        newUser.setUsername(username);
 
-                    primaryStage.initStyle(StageStyle.UNDECORATED);
+        try {
+            if (check) {
 
 
-                    root.setOnMousePressed(mouseEvent -> {
-                        x = mouseEvent.getSceneX();
-                        y = mouseEvent.getSceneY();
-                    });
-                    root.setOnMouseDragged(mouseEvent -> {
-                        primaryStage.setX(mouseEvent.getScreenX() - x);
-                        primaryStage.setY(mouseEvent.getScreenY() - y);
-                    });
-                    primaryStage.show();
-                    ((Node) (event.getSource())).getScene().getWindow().hide();
-                    return;
+            // Attempt to create the new user
+            us.create(newUser);
+
+            // Clear input fields
+            tf_passwordS.clear();
+            tf_usernameS.clear();
+            emailFieldS.clear();
+            lastNameFieldS.clear();
+            FirstNameS.clear();
+
+            // Navigate to the appropriate page based on the user role
+            if (newUser.getUsername().equals("admin")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/adminD/dashboard.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+
+
+                root.setOnMousePressed(mouseEvent -> {
+                    x = mouseEvent.getSceneX();
+                    y = mouseEvent.getSceneY();
+                });
+                root.setOnMouseDragged(mouseEvent -> {
+                    primaryStage.setX(mouseEvent.getScreenX() - x);
+                    primaryStage.setY(mouseEvent.getScreenY() - y);
+                });
+                primaryStage.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                return;
+
+            } else {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/profilesetting.fxml"));
                 Parent root = loader.load();
                 ProfileSetting profileSetting = loader.getController();
@@ -161,16 +191,16 @@ public class SignUpController {
                     stage.setX(mouseEvent.getScreenX() - x);
                     stage.setY(mouseEvent.getScreenY() - y);
                 });
-            } catch (SQLException e) {
+            }}else{
                 error_labelS.setVisible(true);
                 error_labelS.setText("username already exists");
             }
-        }else{
-            error_labelS.setVisible(true);
-            error_labelS.setText("username already exists");
-        }
+        } catch (SQLException e) {
+            System.err.println(e);
 
+        }
     }
+
 
     @FXML
     public void login(ActionEvent event)throws IOException{
@@ -189,7 +219,33 @@ public class SignUpController {
                 us.clearRememberedUser();
             }
             boolean isValid = us.checkCredentials(username, password);
+            if (username.equals("admin")&&isValid) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/adminD/dashboard.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+
+
+                root.setOnMousePressed(mouseEvent -> {
+                    x = mouseEvent.getSceneX();
+                    y = mouseEvent.getSceneY();
+                });
+                root.setOnMouseDragged(mouseEvent -> {
+                    primaryStage.setX(mouseEvent.getScreenX() - x);
+                    primaryStage.setY(mouseEvent.getScreenY() - y);
+                });
+                primaryStage.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                return;
+            }
             if (isValid) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/profilesetting.fxml"));
                 Parent root = loader.load();
@@ -243,5 +299,47 @@ public class SignUpController {
     }
     public void setUserModel(UserModel userModel) {
         this.userModel=userModel;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        newpshow.setVisible(false);
+        openEye.setVisible(false);
+        closedEye.setVisible(true);
+        tf_password.setVisible(true);
+
+        openEye.setOnMouseExited(event->{
+            String pass=newpshow.getText();
+            tf_password.setVisible(true);
+            closedEye.setVisible(true);
+            tf_password.setText(pass);
+            newpshow.setVisible(false);
+            openEye.setVisible(false);
+        });
+        closedEye.setOnMouseClicked(event->{
+            String pass=tf_password.getText();
+            tf_password.setVisible(false);
+            closedEye.setVisible(false);
+            newpshow.setText(pass);
+            newpshow.setVisible(true);
+            openEye.setVisible(true);
+        });
+        forgotPass.setOnMouseClicked(event->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/forgotPassword.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            // Set the scene to the primary stage
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("SignUp");
+            stage.show();
+
+        });
     }
 }
