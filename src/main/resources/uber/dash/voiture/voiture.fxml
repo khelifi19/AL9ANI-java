@@ -21,6 +21,7 @@
       <ToolBar layoutY="-5.0" prefHeight="70.0" prefWidth="761.0" style="-fx-background-color: #EAECEE;">
          <items>
             <ImageView fitHeight="43.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnRetour" mnemonicParsing="false" styleClass="transparent" stylesheets="@../../front/Course/style.css" text="Retour" />
          </items>
       </ToolBar>
       <VBox layoutY="57.0" prefHeight="613.0" prefWidth="150.0" style="-fx-background-color: #EAECEE;">
@@ -30,7 +31,7 @@
                   <Image url="@../Img/al9aniwhite.png" />
                </image>
             </ImageView>
-            <ToggleButton fx:id="btnVehicule" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Vehicules" textFill="#1a1919">
+            <ToggleButton fx:id="btnVehicule" mnemonicParsing="false" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Vehicules" textFill="#1a1919">
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
@@ -39,7 +40,7 @@
                </font>
             </ToggleButton>
 
-            <ToggleButton fx:id="btnCourse" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Courses">
+            <ToggleButton fx:id="btnCourse" mnemonicParsing="false" prefHeight="26.0" prefWidth="207.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Courses">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -47,7 +48,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="btnChauffeur" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Chauffeurs">
+            <ToggleButton fx:id="btnChauffeur" mnemonicParsing="false" prefHeight="26.0" prefWidth="212.0" style="-fx-background-color: #EAECEE;" text="Gestion Des Chauffeurs">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

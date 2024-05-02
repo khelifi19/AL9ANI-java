@@ -2,24 +2,36 @@ package controllers.uber;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import modeles.uber.Course;
 import modeles.uber.Voiture;
 import service.uber.CourseDAO;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 
 public class CourseController {
 
         @FXML
-        private ToggleButton btnCourse;
+        private Button btnCalender;
 
         @FXML
         private ToggleButton btnVehicule;
+        @FXML
+        private ToggleButton btnChauffeur;
 
         @FXML
         private TableColumn<Course, Void> tActions;
@@ -35,6 +47,8 @@ public class CourseController {
 
         @FXML
         private TableColumn<Course, Integer> tNbPersonne;
+        @FXML
+        private Button btnRetour;
 
         @FXML
         private TableColumn<Course, Double> tPrix;
@@ -47,6 +61,14 @@ public class CourseController {
 
         private CourseDAO courseDAO;
 
+
+
+        private static final String ACCOUNT_SID = "AC35b06b363e3a08b12c028d73d80eb716";
+        private static final String AUTH_TOKEN = "262546c4e828d69e6ee4f953a1c79054";
+        private static final String TWILIO_NUMBER = "+17853846782";
+        static {
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        }
         public CourseController() {
                 this.courseDAO = new CourseDAO();
         }
@@ -55,6 +77,10 @@ public class CourseController {
         private void initialize() {
                 initializeTableView();
                 setupActionButtonsCellFactory();
+                btnVehicule.setOnAction(event -> redirectToVoiture());
+                btnChauffeur.setOnAction(event -> redirectToChauffeur());
+                btnRetour.setOnAction(event -> redirectToAccueil());
+                btnCalender.setOnAction(event->redirectToCalender());
         }
 
         private void initializeTableView() {
@@ -86,39 +112,49 @@ public class CourseController {
         }
 
         private void setupActionButtonsCellFactory() {
-                tActions.setCellFactory(new Callback<TableColumn<Course, Void>, TableCell<Course, Void>>() {
+                tActions.setCellFactory(param -> new TableCell<Course, Void>() {
+                        private final Button supprimerButton = new Button();
+                        private final ImageView supprimerIcon = new ImageView(new Image(getClass().getResourceAsStream("/dash/Img/supprimer.png")));
+
+                        {
+                                // Définir l'image de l'icône et la taille
+                                supprimerIcon.setFitWidth(20);
+                                supprimerIcon.setFitHeight(20);
+                                // Définir l'icône comme graphique du bouton
+                                supprimerButton.setGraphic(supprimerIcon);
+
+                                // Définir le comportement du bouton "Supprimer"
+                                supprimerButton.setOnAction(event -> {
+                                        Course course = getTableView().getItems().get(getIndex());
+                                        boolean confirmDelete = showAlert("Confirmation", "Êtes-vous sûr de vouloir supprimer cette Course ?");
+                                        if (confirmDelete) {
+                                                courseDAO.delete(course.getId());
+                                                rafraichirTableView();
+                                                System.out.println("Course supprimée : " + course);
+
+
+
+                                           String clientPhoneNumber = "+21653360028";
+
+                                                // Envoyer un SMS au client
+                                                sendSMS(clientPhoneNumber, "Votre course pour " +course.getDestination() +" a été annulée.");
+                                        }
+                                });
+                        }
+
                         @Override
-                        public TableCell<Course, Void> call(TableColumn<Course, Void> param) {
-                                return new TableCell<Course, Void>() {
-                                        private final Button supprimerButton = new Button("Supprimer");
-
-                                        {
-                                                // Définir le comportement du bouton "Action"
-                                                supprimerButton.setOnAction(event -> {
-                                                        Course course = getTableView().getItems().get(getIndex());
-                                                        boolean confirmDelete = showAlert("Confirmation", "Êtes-vous sûr de vouloir supprimer cette Course ?");
-                                                        if (confirmDelete) {
-                                                                courseDAO.delete(course.getId());
-                                                                rafraichirTableView();
-                                                                System.out.println("Course supprimée : " + course);
-                                                        }
-                                                });
-                                        }
-
-                                        @Override
-                                        protected void updateItem(Void item, boolean empty) {
-                                                super.updateItem(item, empty);
-                                                if (empty) {
-                                                        setGraphic(null);
-                                                } else {
-                                                        HBox buttonsContainer = new HBox(supprimerButton);
-                                                        setGraphic(buttonsContainer);
-                                                }
-                                        }
-                                };
+                        protected void updateItem(Void item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                        setGraphic(null);
+                                } else {
+                                        setGraphic(supprimerButton);
+                                }
                         }
                 });
         }
+
+
 
         private boolean showAlert(String title, String message) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -131,5 +167,146 @@ public class CourseController {
 
         private void rafraichirTableView() {
                 tableViewCourses.setItems(FXCollections.observableArrayList(courseDAO.findAll()));
+        }
+
+
+        private void redirectToVoiture() {
+                System.out.println("Redirection vers l accueil...");
+
+                try {
+                        FXMLLoader loader;
+                        loader = new FXMLLoader(getClass().getResource("/uber/dash/voiture/voiture.fxml"));
+                        Parent root = loader.load();
+                        VoitureController  voitureController = loader.getController();
+                        if (voitureController == null) {
+                                System.out.println("Erreur: Impossible de charger le contrôleur de la page de voiture.");
+                                return;
+                        }
+
+                        Scene scene = new Scene(root);
+                        Stage stage;
+                        if ( btnVehicule != null) {
+                                stage = (Stage)  btnVehicule.getScene().getWindow();
+                        }
+                        else {
+                                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                                return;
+                        }
+
+                        stage.setScene(scene);
+                        stage.show();
+                        System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
+        }
+
+        private void redirectToChauffeur() {
+                System.out.println("Redirection vers l accueil...");
+
+                try {
+                        FXMLLoader loader;
+                        loader = new FXMLLoader(getClass().getResource("/uber/dash/chauffeur/chauffeur.fxml"));
+                        Parent root = loader.load();
+                        ChauffeurController chauffeurController = loader.getController();
+                        if (chauffeurController == null) {
+                                System.out.println("Erreur: Impossible de charger le contrôleur de la page de course.");
+                                return;
+                        }
+
+                        Scene scene = new Scene(root);
+                        Stage stage;
+                        if ( btnChauffeur != null) {
+                                stage = (Stage)  btnChauffeur.getScene().getWindow();
+                        }
+                        else {
+                                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                                return;
+                        }
+
+                        stage.setScene(scene);
+                        stage.show();
+                        System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
+        }
+        private void redirectToAccueil() {
+                System.out.println("Redirection vers la page d'accueil...");
+
+                try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+                        Parent root = loader.load();
+                        AdminController accueilController = loader.getController();
+                        if (accueilController == null) {
+                                System.out.println("Erreur: Impossible de charger le contrôleur de la page d'accueil.");
+                                return;
+                        }
+
+                        Scene scene = new Scene(root);
+                        Stage stage;
+                        if (btnRetour != null) {
+                                stage = (Stage) btnRetour.getScene().getWindow();
+                        } else {
+                                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                                return;
+                        }
+
+                        stage.setScene(scene);
+                        stage.show();
+                        System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
+        }
+
+
+        // Méthode pour envoyer un SMS via Twilio
+        private void sendSMS(String toPhoneNumber, String messageBody) {
+                try {
+                        Message message = Message.creator(
+                                new com.twilio.type.PhoneNumber(toPhoneNumber),
+                                new com.twilio.type.PhoneNumber(TWILIO_NUMBER),
+                                messageBody
+                        ).create();
+
+                        System.out.println("Message SID: " + message.getSid());
+                } catch (Exception e) {
+                        System.out.println("Erreur lors de l'envoi du SMS: " + e.getMessage());
+                        e.printStackTrace();
+                }
+        }
+
+        private void redirectToCalender() {
+
+
+                try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/dash/calender.fxml"));
+                        Parent root = loader.load();
+                        CalenderController calenderController= loader.getController();
+                        if (calenderController == null) {
+                                System.out.println("Erreur: Impossible de charger le contrôleur de la page  des courses .");
+                                return;
+                        }
+
+                        Scene scene = new Scene(root);
+                        Stage stage;
+                        if (btnCalender != null) {
+                                stage = (Stage) btnCalender.getScene().getWindow();
+                        }  else {
+                                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                                return;
+                        }
+
+                        stage.setScene(scene);
+                        stage.show();
+                        System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
         }
 }

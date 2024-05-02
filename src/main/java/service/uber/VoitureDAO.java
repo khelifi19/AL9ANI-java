@@ -6,6 +6,7 @@ import utils.DBConnection;
 import view.uber.IVoiture;
 
 import java.sql.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,12 +132,16 @@ public class VoitureDAO implements IVoiture {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 voiture = mapResultSetToVoiture(resultSet);
+                // Vérifier la disponibilité basée sur l'heure actuelle
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return voiture;
     }
+
+
 
     // Méthode pour mapper un ResultSet à un objet Voiture
     private Voiture mapResultSetToVoiture(ResultSet resultSet) throws SQLException {

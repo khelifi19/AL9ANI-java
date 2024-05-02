@@ -5,6 +5,11 @@ module al9ani {
     requires jbcrypt;
     requires java.prefs;
     requires java.datatransfer;
+    requires twilio;
+    requires stripe.java;
+    requires javafx.web;
+    requires java.mail;
+    requires mysql.connector.j;
 
 
     exports controllers.user;

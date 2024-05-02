@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 
 import javafx.stage.Stage;
 
-import java.awt.*;
+
 import java.io.IOException;
 
 public class AdminController {
@@ -34,6 +34,8 @@ public class AdminController {
     @FXML
     private Button tVoiture;
 
+    @FXML
+    private Button btnCalender;
 
 
     @FXML
@@ -48,6 +50,8 @@ public class AdminController {
 
 
     }
+
+
 
     private void redirectToChauffeur() {
         System.out.println("Redirection vers la page de gestion chauffeur...");
@@ -150,11 +154,11 @@ public class AdminController {
 
 
     private void redirectToAcceuil() {
-        System.out.println("Redirection vers le dashboard...");
+        System.out.println("Redirection vers l accueil...");
 
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/uber/front/homeUber.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/uber/front/Course/homeUber.fxml"));
             Parent root = loader.load();
           HomeUber homeUber = loader.getController();
             if (homeUber == null) {

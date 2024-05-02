@@ -19,7 +19,7 @@ public class Card {
     private Button btnModifier;
 
     @FXML
-    private Button btnRereservez;
+    private Button btnReservez;
 
     @FXML
     private Label tDate;
@@ -81,7 +81,7 @@ public class Card {
     }
 
     public Button getBtnRereservez() {
-        return btnRereservez;
+        return btnReservez;
     }
 
     public Course getCourse() {

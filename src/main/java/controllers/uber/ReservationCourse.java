@@ -123,11 +123,16 @@ public class ReservationCourse {
         nouvelleCourse.setDepart(depart);
         nouvelleCourse.setDestination(destination);
         nouvelleCourse.setNbPersonne(nbPassagers);
-        nouvelleCourse.setPrix(nbPassagers * 23);
+
+       float prix=50;
+        float frais_passagers= (float) (nbPassagers*0.5);
+        float frais_chauffeur=10;
+        float frais_vehicule= typeVehicule == "Bus" ?50 :30;
+        float total=frais_vehicule+frais_chauffeur+frais_passagers+prix;
+        nouvelleCourse.setPrix(total);
         nouvelleCourse.setVoiture(voiture);
 
-        // Ajout de la nouvelle course dans la base de données
-        courseDAO.save(nouvelleCourse);
+
 
         // Redirection vers le paiement.fxml
         try {
