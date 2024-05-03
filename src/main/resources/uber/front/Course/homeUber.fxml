@@ -28,7 +28,7 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="27.0" prefWidth="279.0">
                <children>
-                  <Button fx:id="tAdmin" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="Dashboard" textFill="#ebe6e5">
+                  <Button fx:id="tRetour" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="Retour" textFill="#ebe6e5">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.user.UserModel;
+import modeles.user.UserModel;
 import service.user.PasswordHasher;
 import service.user.UserService;
 
@@ -32,6 +32,7 @@ public class ProfileSetting implements Initializable {
 
     @FXML
     private Button DeleteB;
+
 
     @FXML
     private TextField LastNameU;
@@ -149,7 +150,7 @@ openEye.setOnMouseExited(event->{
                 try {
                     us.clearRememberedUser();
                     // Load the login.fxml file
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/signup.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
                     Parent root = loader.load();
 
                     // Create a new scene with the login page content
@@ -190,7 +191,7 @@ openEye.setOnMouseExited(event->{
 
         // Styling the alert dialog
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/view/user/alertStyle.css").toExternalForm());
+        dialogPane.getStylesheets().add(getClass().getResource("/user/alertStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
 
         // Set custom buttons
@@ -209,7 +210,7 @@ openEye.setOnMouseExited(event->{
                 alert.showAndWait();
 
                 // Redirect to signup page after deleting the account
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/signup.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -234,7 +235,7 @@ openEye.setOnMouseExited(event->{
         alert.setHeaderText("Are you sure you want to update your information?");
         alert.setContentText("Click OK to confirm, or Cancel to return.");
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/view/user/alertStyle.css").toExternalForm());
+        dialogPane.getStylesheets().add(getClass().getResource("/user/alertStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
         Optional <ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){

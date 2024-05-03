@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.user.UserModel;
+import modeles.user.UserModel;
 import service.user.UserService;
 
 import java.io.IOException;
@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class dashboardController implements Initializable {
     @FXML
@@ -51,6 +52,8 @@ public class dashboardController implements Initializable {
 
     @FXML
     private Pane pnlCustomer;
+    @FXML
+    private TextField search;
 
     @FXML
     private Pane pnlOrders;
@@ -76,7 +79,7 @@ public class dashboardController implements Initializable {
                 try {
                     us.clearRememberedUser();
                     // Load the login.fxml file
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/signup.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
                     Parent root = loader.load();
 
                     // Create a new scene with the login page content
@@ -101,7 +104,7 @@ public class dashboardController implements Initializable {
                 HBox node;
                 try {
                     totalU.setText(String.valueOf(users.size()));
-                    node = FXMLLoader.load(getClass().getResource("/view/user/adminD/Item.fxml"));
+                    node = FXMLLoader.load(getClass().getResource("/user/adminD/Item.fxml"));
                     HBox.setHgrow(node, Priority.ALWAYS);
                     setUserInformation(node, users.get(i).getUsername(), users.get(i).getEmail(), users.get(i).getFirstName(), users.get(i).getLastName());
                     pnItems.getChildren().add(node);
@@ -121,6 +124,40 @@ public class dashboardController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Clear the current displayed users
+            pnItems.getChildren().clear();
+
+            // Filter users based on the search input
+            List<UserModel> filteredUsers = users.stream()
+                    .filter(user -> user.getUsername().toLowerCase().contains(newValue.toLowerCase()) ||
+                            user.getEmail().toLowerCase().contains(newValue.toLowerCase()) ||
+                            user.getFirstName().toLowerCase().contains(newValue.toLowerCase()) ||
+                            user.getLastName().toLowerCase().contains(newValue.toLowerCase()))
+                    .collect(Collectors.toList());
+
+            // Display the filtered users
+            for (UserModel user : filteredUsers) {
+                HBox node;
+                try {
+                    totalU.setText(String.valueOf(filteredUsers.size()));
+                    node = FXMLLoader.load(getClass().getResource("/user/adminD/Item.fxml"));
+                    HBox.setHgrow(node, Priority.ALWAYS);
+                    setUserInformation(node, user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName());
+                    pnItems.getChildren().add(node);
+
+                    // Give the items some effect
+                    node.setOnMouseEntered(event -> {
+                        node.setStyle("-fx-background-color : #EBE8F9");
+                    });
+                    node.setOnMouseExited(event -> {
+                        node.setStyle("-fx-background-color : white");
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void handleClicks(ActionEvent actionEvent) {
@@ -169,7 +206,7 @@ public class dashboardController implements Initializable {
 
         // Styling the alert dialog
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("/view/user/alertStyle.css").toExternalForm());
+        dialogPane.getStylesheets().add(getClass().getResource("/user/alertStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
 
         // Set custom buttons
@@ -210,7 +247,7 @@ public class dashboardController implements Initializable {
                 HBox node;
                 try {
                     totalU.setText(String.valueOf(users.size()));
-                    node = FXMLLoader.load(getClass().getResource("/view/user/adminD/Item.fxml"));
+                    node = FXMLLoader.load(getClass().getResource("/user/adminD/Item.fxml"));
                     setUserInformation(node, users.get(i).getUsername(), users.get(i).getEmail(), users.get(i).getFirstName(), users.get(i).getLastName());
                     pnItems.getChildren().add(node);
 

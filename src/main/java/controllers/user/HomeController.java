@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import model.user.UserModel;
+import modeles.user.UserModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +38,7 @@ public class HomeController implements Initializable{
 
                 try {
                     // Load the login.fxml file
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/signup.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
                     Parent root = loader.load();
 
                     // Create a new scene with the login page content

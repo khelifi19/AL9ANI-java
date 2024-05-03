@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="1220.0" styleClass="secondary-color" stylesheets="@settingsStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.ProfileSetting">
+<BorderPane prefHeight="740.0" prefWidth="1220.0" styleClass="secondary-color" stylesheets="@settingsStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.user.ProfileSetting">
    <left>
       <VBox prefHeight="200.0" prefWidth="340.0" spacing="50.0" styleClass="primary-color" stylesheets="@settingsStyle.css" BorderPane.alignment="CENTER">
          <children>

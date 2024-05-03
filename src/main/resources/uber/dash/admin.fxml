@@ -170,7 +170,7 @@
             </Separator>
             <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="27.0" prefWidth="279.0">
                <children>
-                  <Button fx:id="tUser" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@../front/Course/style.css" text="User" textFill="#393838">
+                  <Button fx:id="tRetour" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@../front/Course/style.css" text="Retour">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

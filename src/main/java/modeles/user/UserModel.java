@@ -1,4 +1,4 @@
-package model.user;
+package modeles.user;
 
 import utils.user.DataUtils;
 

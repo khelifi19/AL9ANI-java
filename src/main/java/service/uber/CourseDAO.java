@@ -79,14 +79,15 @@ public class CourseDAO implements ICourse {
 
     @Override
     public void save(Course course) {
-        String query = "INSERT INTO course (destination, depart, nb_personne, date, prix, voiture_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO course (destination, depart, nb_personne, date, prix, voiture_id,userID) VALUES (?, ?, ?, ?, ?, ?,?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, course.getDestination());
             statement.setString(2, course.getDepart());
             statement.setInt(3, course.getNbPersonne());
             statement.setTimestamp(4, Timestamp.valueOf(course.getDate()));
             statement.setDouble(5, course.getPrix());
-            statement.setInt(6, course.getVoiture().getId()); // Ajout de l'ID de la voiture
+            statement.setInt(6, course.getVoiture().getId());
+            statement.setInt(7, course.getUser().getuserId());// Ajout de l'ID de la voiture
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

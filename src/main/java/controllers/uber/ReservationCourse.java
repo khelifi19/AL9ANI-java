@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modeles.uber.Course;
 import modeles.uber.Voiture;
+import modeles.user.UserModel;
 import service.uber.CourseDAO;
 import service.uber.VoitureDAO;
 
@@ -119,10 +120,13 @@ public class ReservationCourse {
 
         // Création de la nouvelle course
         Course nouvelleCourse = new Course();
+        UserModel user=new UserModel();
+        user.setId(53);
         nouvelleCourse.setDate(selectedDate.atStartOfDay());
         nouvelleCourse.setDepart(depart);
         nouvelleCourse.setDestination(destination);
         nouvelleCourse.setNbPersonne(nbPassagers);
+  nouvelleCourse.setUser(user);
 
        float prix=50;
         float frais_passagers= (float) (nbPassagers*0.5);

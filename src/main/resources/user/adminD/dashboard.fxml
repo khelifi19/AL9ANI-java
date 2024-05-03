@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.dashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.user.dashboardController">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #EBE8F9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -91,7 +91,7 @@
                 <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
                     <children>
-                        <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: transparent; -fx-border-color: #2A73FF; -fx-border-radius: 2em;" />
+                        <TextField fx:id="search" layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: transparent; -fx-border-color: #2A73FF; -fx-border-radius: 2em;" />
                         <Label layoutX="57.0" layoutY="43.0" prefHeight="35.0" prefWidth="212.0" text="User Management">
                             <font>
                                 <Font size="24.0" />

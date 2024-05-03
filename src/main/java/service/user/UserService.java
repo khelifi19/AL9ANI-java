@@ -1,7 +1,7 @@
 package service.user;
 
 import javafx.scene.control.Alert;
-import model.user.UserModel;
+import modeles.user.UserModel;
 import utils.user.DataUtils;
 
 import java.sql.*;
@@ -141,7 +141,7 @@ public class UserService implements IService <UserModel>{
             ResultSet resultSet = statement.executeQuery();
 
 
-            return !resultSet.next();
+            return resultSet.next();
 
         } catch (SQLException e) {
             System.err.println("Error while checking if username exists: " + e.getMessage());

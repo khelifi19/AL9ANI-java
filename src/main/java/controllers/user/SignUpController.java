@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import model.user.UserModel;
+import modeles.user.UserModel;
 import service.user.UserService;
 
 import java.io.IOException;
@@ -139,7 +139,7 @@ public class SignUpController implements Initializable {
 
             // Navigate to the appropriate page based on the user role
             if (newUser.getUsername().equals("admin")) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/adminD/dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
                 Parent root = null;
                 try {
                     root = loader.load();
@@ -166,7 +166,7 @@ public class SignUpController implements Initializable {
                 return;
 
             } else {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/profilesetting.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting.fxml"));
                 Parent root = loader.load();
               ProfileSetting profileSetting = loader.getController();
                 profileSetting.setUserInformation(username);
@@ -220,7 +220,7 @@ public class SignUpController implements Initializable {
             }
             boolean isValid = us.checkCredentials(username, password);
             if (username.equals("admin")&&isValid) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/adminD/dashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
                 Parent root = null;
                 try {
                     root = loader.load();
@@ -247,7 +247,7 @@ public class SignUpController implements Initializable {
                 return;
             }
             if (isValid) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/profilesetting.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting.fxml"));
                 Parent root = loader.load();
                 ProfileSetting profileSetting = loader.getController();
                 try {
@@ -325,7 +325,7 @@ public class SignUpController implements Initializable {
             openEye.setVisible(true);
         });
         forgotPass.setOnMouseClicked(event->{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/forgotPassword.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/forgotPassword.fxml"));
             Parent root = null;
             try {
                 root = loader.load();
