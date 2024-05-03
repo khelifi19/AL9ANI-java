@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1291.0" styleClass="background" stylesheets="@../../../style/modern.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReponseController">
+   <children>
+      <Label layoutX="14.0" layoutY="121.0" prefHeight="35.0" prefWidth="292.0" styleClass="page-title" text="Gestion des Reponses">
+         <font> <Font name="System Bold Italic" size="20.0" /></font>
+      </Label>
+
+
+
+      <ScrollPane layoutX="18.4" layoutY="176.0" prefHeight="558.0" prefWidth="1640.0" styleClass="card-image" stylesheets="@../../../style/modern.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="176.0">
+         <content>
+            <TilePane fx:id="myTilePane" hgap="20" stylesheets="@../../../style/modern.css" vgap="20" />
+         </content>
+      </ScrollPane>
+      <AnchorPane id="topBar" layoutY="-3.0" prefHeight="90.0" prefWidth="1665.0" styleClass="top-bar">
+         <children>
+            <Label layoutX="963.0" layoutY="26.0" prefHeight="22.0" prefWidth="200.0" styleClass="header-label" text="User Account" textFill="#FFFFFF" />
+
+            <Label layoutX="37.0" layoutY="26.0" prefHeight="22.0" prefWidth="60.0" styleClass="header-label" text="Lang:" textFill="#FFFFFF" />
+            <Label layoutX="83.0" layoutY="26.0" prefHeight="22.0" prefWidth="40.0" styleClass="header-label" text="EN" textFill="#FFFFFF" underline="true" />
+            <ImageView fitHeight="60.0" fitWidth="83.0" layoutX="1063.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+
+            </ImageView>
+            <ImageView fitHeight="69.0" fitWidth="121.0" layoutX="1118.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

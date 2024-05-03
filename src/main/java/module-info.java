@@ -11,12 +11,17 @@ module com.example.al9ani {
     requires java.mail;
     requires mysql.connector.j;
     requires javafx.graphics;
+    requires java.desktop;
+    requires itextpdf;
 
-exports com.example.al9ani.test;
+
+    exports com.example.al9ani.test;
 opens com.example.al9ani.test to javafx.fxml;
     exports controllers.user;
     opens controllers.user to javafx.fxml;
     exports controllers.uber;
     opens controllers.uber to javafx.fxml;
+    exports controllers.reclamation;
+    opens controllers.reclamation to javafx.fxml;
 
 }

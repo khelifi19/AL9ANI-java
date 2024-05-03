@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane prefHeight="743.0" prefWidth="1522.0" styleClass="background" stylesheets="@../../../style/moderstyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationController">
+   <!-- This button should be placed appropriately within your existing FXML layout -->
+   <Button fx:id="navigateToResponseButton" onAction="#navigateToResponse" text="Go to Responses" />
+   <Button id="Button" fx:id="backToDashboardButton" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#navigateToResponse" prefHeight="42.0" prefWidth="80.0" stylesheets="@../../../../../../../../../Cv/livcommande/src/main/resources/livcom/livcommande/css/style.css" text="Back">
+      <graphic>
+         <Label text="←" />
+      </graphic>
+   </Button>
+   <Button fx:id="back" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#navigateToResponse" text="Back" />
+
+   <children>
+      <Label layoutX="14.0" layoutY="121.0" prefHeight="35.0" prefWidth="292.0" styleClass="page-title" text="Gestion des reclamations">
+         <font> <Font name="System Bold Italic" size="20.0" /></font>
+      </Label>
+      <TextField fx:id="searchField" layoutX="332.0" layoutY="121.0" onAction="#search" prefHeight="46.0" prefWidth="306.0" promptText="Search by object" styleClass="sear" stylesheets="@../../../style/moderstyle.css" />
+
+
+      <ScrollPane layoutX="18.4" layoutY="176.0" prefHeight="558.0" prefWidth="1640.0" styleClass="card-image" stylesheets="@../../../style/moderstyle.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="176.0">
+         <content>
+            <TilePane fx:id="myTilePane" hgap="20" stylesheets="@../../../style/modern-style.css" vgap="20" />
+         </content>
+      </ScrollPane>
+      <AnchorPane id="topBar" layoutY="-3.0" prefHeight="90.0" prefWidth="1665.0" styleClass="top-bar">
+         <children>
+            <Label layoutX="963.0" layoutY="26.0" prefHeight="22.0" prefWidth="200.0" styleClass="header-label" text="User Account" textFill="#FFFFFF" />
+
+            <Label layoutX="37.0" layoutY="26.0" prefHeight="22.0" prefWidth="60.0" styleClass="header-label" text="Lang:" textFill="#FFFFFF" />
+            <Label layoutX="83.0" layoutY="26.0" prefHeight="22.0" prefWidth="40.0" styleClass="header-label" text="EN" textFill="#FFFFFF" underline="true" />
+            <ImageView fitHeight="60.0" fitWidth="83.0" layoutX="1063.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
