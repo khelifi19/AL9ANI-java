@@ -11,13 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modeles.user.UserModel;
 import service.user.PasswordHasher;
 import service.user.UserService;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -182,6 +186,22 @@ openEye.setOnMouseExited(event->{
             emailU.setText(userM.getEmail());
         }
     }
+    /*
+    public void upload_pfp(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload your profile picture");
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName().toLowerCase();
+            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                picture_input.setText(selectedFile.getPath());
+            } else {
+                System.out.println("Invalid file format. Please select a PNG or JPG file.");
+            }
+        } else {
+            System.out.println("No file selected");
+        }
+    }*/
     @FXML
     private void deleteUser(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -240,6 +260,10 @@ openEye.setOnMouseExited(event->{
         Optional <ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             try {
+               /* String picturePath = picture_input.getText();
+                Path path = Paths.get(picturePath);
+                String fileName = path.getFileName().toString();
+                userM.setImg(fileName);*/
                 userM.setFirstName(firstNameU.getText());
                 userM.setLastName(LastNameU.getText());
                 userM.setEmail(emailU.getText());

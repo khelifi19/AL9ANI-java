@@ -18,7 +18,7 @@
 <AnchorPane prefHeight="740.0" prefWidth="1330.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationBackController">
 
     <children>
-        <ListView fx:id="recl" layoutX="357.0" layoutY="136.0" prefHeight="576.0" prefWidth="918.0" />
+        <ListView fx:id="recl" layoutX="412.0" layoutY="136.0" prefHeight="576.0" prefWidth="904.0" />
         <Text layoutX="104.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Reclamation">
             <font>
                 <Font name="System Bold Italic" size="20.0" />
@@ -30,7 +30,7 @@
             <URL value="@style.css" />
          </stylesheets></TextField>
         <ComboBox fx:id="triChoiceBox" layoutX="888.0" layoutY="86.0" onAction="#TrichoiceMethod" prefWidth="150.0" promptText="Trier par" />
-      <VBox layoutX="35.0" layoutY="74.0" prefHeight="576.0" prefWidth="303.0" spacing="15" stylesheets="@style.css">
+      <VBox layoutX="104.0" layoutY="107.0" prefHeight="576.0" prefWidth="303.0" spacing="15" style="-fx-background-color: f41b3b;" stylesheets="@style.css">
          <styleClass>
             <String fx:value="chosen-fruit-card" />
             <String fx:value="shadow" />
@@ -56,9 +56,9 @@
                   <Pane layoutX="3.0" layoutY="385.0" prefHeight="58.0" prefWidth="276.0">
                      <children>
                         <ImageView fitHeight="74.0" fitWidth="83.0" layoutX="308.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-                          <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#delete" prefHeight="34.0" prefWidth="78.0" style="-fx-background-color: rgba(255,251,0,0.62);" text="Delete" textFill="WHITE" />
-                          <Button fx:id="generatepdfid" layoutX="105.0" layoutY="12.0" mnemonicParsing="false" onAction="#makePdf" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: blue;" text="PDF" textAlignment="CENTER" textFill="WHITE" />
-                          <Button layoutX="203.0" layoutY="12.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: rgba(128,102,0,0.42);" text="ajouter" textFill="WHITE" />
+                          <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#delete" prefHeight="34.0" prefWidth="78.0" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Delete" textFill="WHITE" />
+                          <Button fx:id="generatepdfid" layoutX="105.0" layoutY="12.0" mnemonicParsing="false" onAction="#makePdf" prefHeight="34.0" prefWidth="70.0" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="PDF" textAlignment="CENTER" textFill="WHITE" />
+                          <Button layoutX="203.0" layoutY="12.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="34.0" prefWidth="87.0" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="ajouter" textFill="WHITE" />
                      </children>
                   </Pane>
                </children>
@@ -77,18 +77,73 @@
       </Label>
       <ImageView fitHeight="47.0" fitWidth="83.0" layoutX="341.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/agences-location-voitures-tiziouzou.jpg" />
+            <Image url="@../user/img/al9aniwhite.png" />
          </image>
       </ImageView>
-      <Label layoutX="1111.0" layoutY="18.0" prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
-         <font>
-            <Font name="Cambria" size="18.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="62.0" fitWidth="112.0" layoutX="1231.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/images.png" />
          </image>
       </ImageView>
+      <VBox layoutY="123.0" prefHeight="544.0" prefWidth="100.0" style="-fx-background-color: f41b3b; -fx-background-radius: 15 0 0 15;">
+         <children>
+            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+            <Button fx:id="btnOverview" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="83.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Overview" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/cat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="userb" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Users" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/utilisateur.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="uberB" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/icons8_Car_52px_2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="etabB" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="eventB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/calendar_2693507.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="recB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="87.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/write_10215922.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Button fx:id="ReponseB" layoutX="1093.0" layoutY="32.0" mnemonicParsing="false" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Reponse" />
     </children>
 </AnchorPane>

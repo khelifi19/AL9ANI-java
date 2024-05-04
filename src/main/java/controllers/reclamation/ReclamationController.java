@@ -227,7 +227,7 @@ public class ReclamationController implements Initializable {
     void navigateToResponse(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/reclamation/reponse.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/reclamation/reponseback.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

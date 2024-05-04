@@ -4,15 +4,8 @@
     -fx-base: #ffffff;
 }
 
-.button {
-    -fx-background-color: linear-gradient(#fe6161, #c73030);
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 1);
-}
 
-.button:hover {
-    -fx-background-color: linear-gradient(#ff7878, #e64545);
-}
+
 
 .text-field {
     -fx-background-color: white;
@@ -24,22 +17,10 @@
     -fx-stroke: #c73030;
 }
 
-.text {
-    -fx-fill: #c73030;
-}
-.text-field:focused {
-    -fx-border-color: darkred;
-    -fx-border-width: 2px;
-}
-.button:pressed {
-    -fx-background-color: linear-gradient(#e64545, #c73030);
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 3, 0, 2, 2);
-}
-.text {
-    -fx-fill: #c73030;
-    -fx-font-size: 18px;
-    -fx-effect: dropshadow(one-pass-box, black, 3, 0.5, 0, 1);
-}
+
+
+
+
 .scroll-bar:vertical > .thumb {
     -fx-background-color: #c73030;
 }
@@ -50,9 +31,7 @@
     -fx-background-color: #ffffff;
     -fx-background-insets: 0, 1, 2;
 }
-.shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
-}
+
 
 .chosen-fruit-card{
     -fx-background-color: #c73030;

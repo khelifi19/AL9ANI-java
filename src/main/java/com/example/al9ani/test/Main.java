@@ -51,7 +51,7 @@ public class Main extends Application {
                         throw new RuntimeException(e);
                     }
                     ProfileSetting profileSetting = loader.getController();
-                    try {
+                   try {
                         profileSetting.setUserInformation(username);
                     } catch (SQLException e) {
                         System.err.println(e);

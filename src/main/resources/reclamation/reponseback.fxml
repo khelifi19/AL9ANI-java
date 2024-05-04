@@ -9,13 +9,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="689.0" prefWidth="984.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReponsebackController">
    <children>
-      <ListView fx:id="reponse" layoutX="12.0" layoutY="82.0" prefHeight="595.0" prefWidth="584.0" />
-      <Pane layoutX="607.0" layoutY="89.0" prefHeight="572.0" prefWidth="332.0" styleClass="chosen-fruit-card">
+      <ListView fx:id="reponse" layoutX="118.0" layoutY="82.0" prefHeight="595.0" prefWidth="584.0" />
+      <Pane layoutX="710.0" layoutY="82.0" prefHeight="572.0" prefWidth="332.0" styleClass="chosen-fruit-card">
          <children>
             <Label fx:id="fruitNameLable11" layoutX="14.0" layoutY="21.0" prefHeight="44.0" prefWidth="293.0" textFill="#faeeee">
                <font>
@@ -57,15 +58,70 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="874.0" layoutY="9.0" prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
-         <font>
-            <Font name="Cambria" size="18.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="62.0" fitWidth="112.0" layoutX="994.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/images.png" />
          </image>
       </ImageView>
+      <VBox layoutX="14.0" layoutY="108.0" prefHeight="544.0" prefWidth="100.0" style="-fx-background-color: f41b3b; -fx-background-radius: 15 0 0 15;">
+         <children>
+            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+            <Button fx:id="btnOverview" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="83.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Overview" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/cat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="userb" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Users" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/utilisateur.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="uberB" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/icons8_Car_52px_2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="etabB" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="eventB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/calendar_2693507.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="recB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="87.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/img/write_10215922.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Button fx:id="reponseB" layoutX="870.0" layoutY="26.0" mnemonicParsing="false" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="reclamation" />
    </children>
 </AnchorPane>

@@ -129,7 +129,7 @@ public class SignUpController implements Initializable {
 
             // Attempt to create the new user
             us.create(newUser);
-
+         UserService.setCurrentlyLoggedInUser(newUser);
             // Clear input fields
             tf_passwordS.clear();
             tf_usernameS.clear();
@@ -203,7 +203,7 @@ public class SignUpController implements Initializable {
 
 
     @FXML
-    public void login(ActionEvent event)throws IOException{
+    public void login(ActionEvent event) throws IOException, SQLException {
 
         String username = tf_username.getText();
         String password = tf_password.getText();
@@ -220,6 +220,8 @@ public class SignUpController implements Initializable {
             }
             boolean isValid = us.checkCredentials(username, password);
             if (username.equals("admin")&&isValid) {
+                UserModel newUser= us.readUser(username);
+                UserService.setCurrentlyLoggedInUser(newUser);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
                 Parent root = null;
                 try {

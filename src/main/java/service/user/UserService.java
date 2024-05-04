@@ -2,6 +2,7 @@ package service.user;
 
 import javafx.scene.control.Alert;
 import modeles.user.UserModel;
+import utils.DBConnection;
 import utils.user.DataUtils;
 
 import java.sql.*;
@@ -10,8 +11,18 @@ import java.util.List;
 import java.util.prefs.Preferences;
 
 public class UserService implements IService <UserModel>{
-    private Connection connection;
+    private final Connection connection;
+
+    public static UserModel getCurrentlyLoggedInUser() {
+        return currentlyLoggedInUser;
+    }
+
+    public static void setCurrentlyLoggedInUser(UserModel currentlyLoggedInUser) {
+        UserService.currentlyLoggedInUser = currentlyLoggedInUser;
+    }
+
     public static UserModel currentlyLoggedInUser = null;
+
     private Preferences prefs = Preferences.userNodeForPackage(UserService.class);
     public void rememberUser(String username, String password) {
         prefs.put("username", username);
@@ -43,17 +54,7 @@ public class UserService implements IService <UserModel>{
         return null;
     }
 
-    public UserService(Connection connection) {
-        try {
-            this.connection= DataUtils.getConnection();
-            System.out.println("Connexion réussie!");
 
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     public UserModel readUser(String username) throws SQLException {
         String sql = "SELECT * FROM users WHERE username = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -176,15 +177,13 @@ public class UserService implements IService <UserModel>{
     }
 
     public UserService() {
-        try {
-            this.connection= DataUtils.getConnection();
+
+            this.connection = DBConnection.getInstance().getCnx();
             System.out.println("Connexion réussie!");
 
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override

@@ -20,6 +20,8 @@ import service.user.UserService;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -264,11 +266,32 @@ public void setFinal(String email){
 
         private void sendOtpEmail(String recipientEmail, String otp) {
             String subject = "Your One-Time Password";
-            String body = "Your One-Time Password is: " + otp;
+           // String body = "Your One-Time Password is: " + otp;
+            String body = generateHtmlEmail(otp);
 
             sendEmail(recipientEmail, subject, body);
         }
+    private String generateHtmlEmail(String otp) {
+        // Read the HTML template file
+        StringBuilder contentBuilder = new StringBuilder();
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("src/main/resources/user/emailTemplate.html"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                contentBuilder.append(str);
+            }
+            in.close();
+        } catch (IOException e) {
+            System.out.println("Error reading HTML file: " + e.getMessage());
+            return ""; // Return an empty string if there's an error
+        }
+        String template = contentBuilder.toString();
 
+        // Replace placeholder with OTP
+        String htmlContent = template.replace("<strong> otp </strong>", "<strong>" + otp + "</strong>");
+
+        return htmlContent;
+    }
 
 
     public static void sendEmail(String recipientEmail, String subject, String body) {
@@ -300,7 +323,8 @@ public void setFinal(String email){
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(body, "text/html");
+
 
             // Envoi du message
             Transport.send(message);

@@ -2,6 +2,7 @@ package service.uber;
 
 import modeles.uber.Course;
 import modeles.uber.Voiture;
+import service.user.UserService;
 import utils.DBConnection;
 import view.uber.ICourse;
 
@@ -132,9 +133,10 @@ public class CourseDAO implements ICourse {
     public List<Course> findCurrentCourses() {
         List<Course> currentCourses = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date >= ?";
+        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date >= ? AND c.userID = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setTimestamp(1, Timestamp.valueOf(now));
+            statement.setInt(2, UserService.getCurrentlyLoggedInUser().getuserId());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();
@@ -165,9 +167,10 @@ public class CourseDAO implements ICourse {
     public List<Course> findHistoricalCourses() {
         List<Course> historicalCourses = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date < ?";
+        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date < ? AND c.userID = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setTimestamp(1, Timestamp.valueOf(now));
+            statement.setInt(2, UserService.getCurrentlyLoggedInUser().getuserId());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();

@@ -17,7 +17,6 @@ public class OtpManager {
 
     public static boolean verifyOTP(String email, String otp) {
         String storedOTP = otpTokens.get(email);
-        System.out.println(email);
         if (storedOTP != null && storedOTP.equals(otp)) {
             otpTokens.remove(email); // Remove OTP token after successful verification
             return true;

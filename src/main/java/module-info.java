@@ -14,7 +14,8 @@ module com.example.al9ani {
     requires java.desktop;
     requires itextpdf;
 
-
+exports  modeles.uber;
+opens modeles.uber to javafx.base;
     exports com.example.al9ani.test;
 opens com.example.al9ani.test to javafx.fxml;
     exports controllers.user;

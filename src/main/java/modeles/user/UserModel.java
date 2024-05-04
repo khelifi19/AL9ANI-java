@@ -1,5 +1,6 @@
 package modeles.user;
 
+import utils.DBConnection;
 import utils.user.DataUtils;
 
 import java.sql.Connection;
@@ -11,6 +12,18 @@ public class UserModel {
     private int userId;
    private String password;
    private String email;
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    private String img;
+    public String getImg() {
+        return img;
+    }
+
+
+
 
     public UserModel(int idUser, String username, String email, String firstName, String lastName, String password) {
         this.userId=idUser;
@@ -95,15 +108,7 @@ public class UserModel {
         this.username="";
         this.password="";
         this.userId=0;
-        try {
-            this.connection=DataUtils.getConnection();
-            System.out.println("Connexion réussie!");
-
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }}
+        this.connection = DBConnection.getInstance().getCnx();}
 
 
 

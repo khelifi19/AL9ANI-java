@@ -4,13 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.control.TextField?>
-<AnchorPane prefHeight="743.0" prefWidth="1522.0" styleClass="background" stylesheets="@../../../style/moderstyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationController">
+<AnchorPane prefHeight="743.0" prefWidth="1682.0" styleClass="background" stylesheets="@../../../style/moderstyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationController">
    <!-- This button should be placed appropriately within your existing FXML layout -->
    <Button fx:id="navigateToResponseButton" onAction="#navigateToResponse" text="Go to Responses" />
    <Button id="Button" fx:id="backToDashboardButton" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#navigateToResponse" prefHeight="42.0" prefWidth="80.0" stylesheets="@../../../../../../../../../Cv/livcommande/src/main/resources/livcom/livcommande/css/style.css" text="Back">
