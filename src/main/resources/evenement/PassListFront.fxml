@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import models.Pass?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PassTable">
+    <children>
+        <ListView fx:id="passListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" />
+        <TextField fx:id="tfType" layoutX="50.0" layoutY="360.0" promptText="Type" />
+        <TextField fx:id="tfPrixPass" layoutX="200.0" layoutY="360.0" promptText="Prix Pass" />
+        <Button fx:id="modifierButton" layoutX="350.0" layoutY="360.0" onAction="#modifierPass" text="Modifier" />
+        <Button fx:id="supprimerButton" layoutX="450.0" layoutY="360.0" onAction="#supprimerPass" text="Supprimer" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WelcomeController">
+   <children>
+      <Text layoutX="93.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue à la gestion d'événements !">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="187.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Que souhaitez-vous faire aujourd'hui ?" wrappingWidth="241.76837158203125">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="93.0" layoutY="255.0" mnemonicParsing="false" text="Gérer les evenements" />
+      <Button layoutX="372.0" layoutY="254.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Gérer les pass" />
+   </children>
+</AnchorPane>
