@@ -149,5 +149,5 @@
 }
 .linear-grad
 {
-    -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+    -fx-background-color: linear-gradient(to bottom left, #ff374d, rgba(255, 195, 205, 0.68));
 }

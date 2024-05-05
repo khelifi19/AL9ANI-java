@@ -9,10 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modeles.user.UserModel;
 import service.user.PasswordHasher;
 import service.user.UserService;
@@ -20,8 +24,10 @@ import service.user.UserService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -36,7 +42,11 @@ public class ProfileSetting implements Initializable {
 
     @FXML
     private Button DeleteB;
+    @FXML
+    private ImageView img;
 
+    @FXML
+    private TextField picture_input;
 
     @FXML
     private TextField LastNameU;
@@ -46,7 +56,12 @@ public class ProfileSetting implements Initializable {
 
     @FXML
     private PasswordField confirmPass;
-
+    @FXML
+    private MenuItem reset;
+    @FXML
+    private MenuItem logout;
+    @FXML
+    private MenuItem update;
     @FXML
     private TextField emailU;
 
@@ -60,6 +75,8 @@ public class ProfileSetting implements Initializable {
     private Label newP;
     @FXML
     private ImageView openEye;
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private PasswordField newPass;
@@ -70,10 +87,16 @@ public class ProfileSetting implements Initializable {
     private Label oldP;
 
     @FXML
-    private PasswordField oldPass;
+    private Button imgUploader;
 
     @FXML
-    private Button reset;
+    private Circle circle;
+
+    @FXML
+    private PasswordField oldPass;
+
+   // @FXML
+    //private Button reset;
 
     @FXML
     private Button resetP;
@@ -96,17 +119,19 @@ public class ProfileSetting implements Initializable {
     private Pane userInfoP;
 
     private UserModel userM;
-
+    @FXML
+    private MenuButton menu;
     public ProfileSetting() {
         this.userM = new UserModel();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // Initially, show userInfoP and hide resetPassword
         userInfoP.setVisible(true);
-        resetPassword.setVisible(false);
+       resetPassword.setVisible(false);
 
-        newpshow.setVisible(false);
+        //newpshow.setVisible(false);
     openEye.setVisible(false);
         closedEye.setVisible(true);
         newPass.setVisible(true);
@@ -128,17 +153,19 @@ openEye.setOnMouseExited(event->{
         });
 
 
-        updateB.setOnAction(event -> {
+      update.setOnAction(event -> {
             userInfoP.setVisible(true);
             resetPassword.setVisible(false);
+          imgUploader.setVisible(true);
         });
 
-        resetP.setOnAction(event -> {
+       reset.setOnAction(event -> {
             // Show resetPassword and hide userInfoP
             userInfoP.setVisible(false);
             resetPassword.setVisible(true);
+            imgUploader.setVisible(false);
         });
-
+        menu.setText(UserService.getCurrentlyLoggedInUser().getUsername());
 
             if (userM != null) {
                 firstNameU.setText(userM.getFirstName());
@@ -147,7 +174,7 @@ openEye.setOnMouseExited(event->{
             }
 
 
-        logoutB.setOnAction(new EventHandler<ActionEvent>() {
+        logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
@@ -161,7 +188,7 @@ openEye.setOnMouseExited(event->{
                     Scene scene = new Scene(root);
 
                     // Get the stage (window) from the button's action event
-                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    Stage stage = (Stage) ((MenuItem) actionEvent.getSource()).getParentPopup().getOwnerWindow();
 
                     // Set the scene to the stage and show it
                     stage.setScene(scene);
@@ -175,15 +202,59 @@ openEye.setOnMouseExited(event->{
 
 
     }
+    public void upload(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload your profile picture");
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName().toLowerCase();
+            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                picture_input.setText(selectedFile.getPath());
+            } else {
+                System.out.println("Invalid file format. Please select a PNG or JPG file.");
+            }
+        } else {
+            System.out.println("No file selected");
+        }
+    }
 
+
+    public void setImg(String path,int width,int height) {
+        URL imageUrl = getClass().getResource("/user/img/profilePictures/" + path);
+        System.out.println(imageUrl);
+        if (imageUrl != null) {
+            Image image = new Image(imageUrl.toExternalForm());
+            img.setImage(image);
+            img.setFitWidth(width);
+            img.setFitHeight(height);
+        } else {
+            System.out.println("Image not found");
+        }
+
+    }
 
     public void setUserInformation(String username) throws SQLException {
-        user.setText("Welcome " + username);
+      //  user.setText("Welcome " + username);
+        menu.setText(username);
      this.userM= us.readUser(username);
         if (userM != null) {
             firstNameU.setText(userM.getFirstName());
             LastNameU.setText(userM.getLastName());
             emailU.setText(userM.getEmail());
+
+            picture_input.setText(userM.getImg());
+            System.out.println(picture_input.getText());
+            URL imageUrl = getClass().getResource("/user/img/profilePictures/" + picture_input.getText());
+            System.out.println(imageUrl);
+            if (imageUrl != null) {
+                Image image = new Image(imageUrl.toExternalForm());
+                circle.setFill(new ImagePattern(image));
+                img.setImage(image);
+                img.setFitWidth(200);
+                img.setFitHeight(200);
+            } else {
+                System.out.println("Image not found");
+            }
         }
     }
     /*
@@ -257,22 +328,40 @@ openEye.setOnMouseExited(event->{
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("/user/alertStyle.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
-        Optional <ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
             try {
-               /* String picturePath = picture_input.getText();
+                String picturePath = picture_input.getText();
                 Path path = Paths.get(picturePath);
-                String fileName = path.getFileName().toString();
-                userM.setImg(fileName);*/
-                userM.setFirstName(firstNameU.getText());
-                userM.setLastName(LastNameU.getText());
-                userM.setEmail(emailU.getText());
-                us.update(userM);
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText(null);
-                alert.setContentText("Your information has been updated successfully!");
-                alert.showAndWait();
+
+                if (Files.exists(path)) { // Check if the file exists
+                    String fileName = path.getFileName().toString();
+                    userM.setImg(fileName);
+                    userM.setFirstName(firstNameU.getText());
+                    userM.setLastName(LastNameU.getText());
+                    userM.setEmail(emailU.getText());
+                    us.update(userM);
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Your information has been updated successfully!");
+                    alert.showAndWait();
+                    setUserInformation(UserService.getCurrentlyLoggedInUser().getUsername());
+
+                    Path destinationPath = Paths.get("src/main/resources/user/img/profilePictures", fileName);
+                    try {
+                        Files.copy(path, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    // File not found, show an error message
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The selected file does not exist!");
+                    alert.showAndWait();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -284,12 +373,13 @@ openEye.setOnMouseExited(event->{
         } else if (result.get() == ButtonType.CANCEL) {
             // Reload user's old information and update text fields
             try {
-
                 setUserInformation(userM.getUsername());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }}
+        }
+    }
+
     @FXML
     void reset(ActionEvent event){
         // Retrieve the password values

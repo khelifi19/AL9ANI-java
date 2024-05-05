@@ -29,7 +29,7 @@
                      </font>
                   </Label>
                   <Button fx:id="signIn" layoutX="68.0" layoutY="313.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="185.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Sign In" textFill="WHITE" />
-                  <TextField fx:id="tf_username" layoutX="39.0" layoutY="115.0" prefHeight="33.0" prefWidth="242.0" promptText="UserName">
+                  <TextField fx:id="tf_username" layoutX="39.0" layoutY="115.0" prefHeight="33.0" prefWidth="242.0" promptText="UserName" style="-fx-border-radius: 100;">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
@@ -39,7 +39,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="tf_password" layoutX="39.0" layoutY="157.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" />
+                  <PasswordField fx:id="tf_password" layoutX="39.0" layoutY="157.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" style="-fx-border-radius: 100;" />
                   <CheckBox fx:id="rememberMeCheckbox" layoutX="43.0" layoutY="218.0" mnemonicParsing="false" text="Remember Me" textFill="#f41b3b" />
                   <AnchorPane layoutX="253.0" layoutY="159.0">
                      <children>
@@ -55,13 +55,13 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="newpshow" layoutX="38.0" layoutY="160.0" prefHeight="26.0" prefWidth="235.0" />
+                  <TextField fx:id="newpshow" layoutX="38.0" layoutY="160.0" prefHeight="26.0" prefWidth="235.0" style="-fx-border-radius: 100;" />
                   <Hyperlink fx:id="forgotPass" layoutX="179.0" layoutY="199.0" text="Forgot password ?" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="signUpForm" layoutY="-2.0" prefHeight="415.0" prefWidth="320.0" styleClass="white-form" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-2.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="103.0" layoutX="116.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="103.0" layoutX="112.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/al9aniwhite.png" />
                      </image>
@@ -71,36 +71,42 @@
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="signUpS" layoutX="85.0" layoutY="329.0" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="138.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Sign Up" textFill="WHITE" />
-                  <TextField fx:id="lastNameFieldS" layoutX="33.0" layoutY="148.0" prefHeight="33.0" prefWidth="242.0" promptText="Last Name">
+                  <Button fx:id="signUpS" layoutX="93.0" layoutY="272.0" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="138.0" styleClass="signup-btn" stylesheets="@signUpstyle.css" text="Sign Up" textFill="WHITE" />
+                  <TextField fx:id="lastNameFieldS" layoutX="154.0" layoutY="101.0" prefHeight="33.0" prefWidth="138.0" promptText="Last Name" style="-fx-border-radius: 100;">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="tf_usernameS" layoutX="33.0" layoutY="189.0" prefHeight="33.0" prefWidth="242.0" promptText="UserName">
+                  <TextField fx:id="tf_usernameS" layoutX="12.0" layoutY="152.0" prefHeight="33.0" prefWidth="138.0" promptText="UserName" style="-fx-border-radius: 100;">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="emailFieldS" layoutX="33.0" layoutY="230.0" prefHeight="33.0" prefWidth="242.0" promptText="Email">
+                  <TextField fx:id="emailFieldS" layoutX="154.0" layoutY="152.0" prefHeight="33.0" prefWidth="138.0" promptText="Email" style="-fx-border-radius: 100;">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="FirstNameS" layoutX="33.0" layoutY="108.0" prefHeight="33.0" prefWidth="242.0" promptText="First Name" styleClass="text-field" stylesheets="@signUpstyle.css">
+                  <TextField fx:id="FirstNameS" layoutX="12.0" layoutY="101.0" prefHeight="33.0" prefWidth="138.0" promptText="First Name" style="-fx-border-radius: 100;" styleClass="text-field" stylesheets="@signUpstyle.css">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="33.0" layoutY="71.0" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Register Account" textFill="#f41b3b">
+                  <Label layoutX="33.0" layoutY="55.0" styleClass="head_logo" stylesheets="@signUpstyle.css" text="Register Account" textFill="#f41b3b">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="tf_passwordS" layoutX="33.0" layoutY="269.0" prefHeight="33.0" prefWidth="242.0" promptText="Password" />
+                  <PasswordField fx:id="tf_passwordS" layoutX="12.0" layoutY="200.0" prefHeight="33.0" prefWidth="138.0" promptText="Password" style="-fx-border-radius: 100;" />
+                  <Button layoutX="154.0" layoutY="200.0" mnemonicParsing="false" onAction="#upload" prefHeight="30.0" prefWidth="138.0" style="-fx-border-color: linear-gradient(to bottom right,#f41b3b,#FAA3B0); -fx-background-color: transparent; -fx-border-radius: 100; -fx-border-width: 1; -fx-text-fill: f41b3b;" stylesheets="@signUpstyle.css" text="Upload Photo">
+                     <font>
+                        <Font name="Montserrat SemiBold" size="15.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="picture_input" layoutX="27.0" layoutY="343.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-color: black;" visible="false" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="sideForm" prefHeight="415.0" prefWidth="334.0" styleClass="gradient" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="sideForm" prefHeight="400.0" prefWidth="323.0" styleClass="gradient" stylesheets="@signUpstyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button fx:id="sideButton" layoutX="77.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchLogin" prefHeight="28.0" prefWidth="168.0" style="-fx-cursor: hand;" styleClass="create-btn" stylesheets="@signUpstyle.css" text="Create new Account" AnchorPane.bottomAnchor="53.0">
                      <font>

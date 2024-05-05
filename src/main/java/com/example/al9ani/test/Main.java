@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import service.user.UserService;
 import utils.user.DataUtils;
 
@@ -33,6 +34,7 @@ public class Main extends Application {
                     }
 
                     Stage primaryStage = new Stage();
+                    primaryStage.initStyle(StageStyle.UNDECORATED);
                     primaryStage.setScene(new Scene(root));
 
 
@@ -43,7 +45,7 @@ public class Main extends Application {
                     return;
                 }else {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting2.fxml"));
                     Parent root= null;
                     try {
                         root = loader.load();
@@ -71,6 +73,7 @@ public class Main extends Application {
 
             // Set the scene to the stage and show the stage
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             // stage.getIcons().add(new Image("view/user/img/favicon.png"));
             stage.setTitle("Welcome!");
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="804.0" style="-fx-background-color: f41b3b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/search2.png" />
+         </image>
+         <HBox.margin>
+            <Insets left="24.0" />
+         </HBox.margin>
+      </ImageView>
+      <TextField prefHeight="25.0" prefWidth="209.0" promptText="Search " styleClass="transparent" stylesheets="@navbarStyle.css" />
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+      <Pane layoutX="264.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pane layoutX="264.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pane prefHeight="200.0" prefWidth="200.0" />
+      <Circle fx:id="circle" fill="#f4f5ee" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <MenuButton mnemonicParsing="false" style="-fx-background-color: transarent;" stylesheets="@signUpstyle.css" text="Username" textFill="WHITE">
+         <items>
+            <MenuItem mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: f41b3b;" text="Profile Settings" />
+            <MenuItem mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: f41b3b;" text="reset Password" />
+            <MenuItem mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: f41b3b;" text="logout" />
+         </items>
+      </MenuButton>
+   </children>
+</HBox>

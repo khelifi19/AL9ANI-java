@@ -9,9 +9,22 @@ import java.util.Objects;
 
 public class UserModel {
     private String username;
+
+
+
     private int userId;
    private String password;
    private String email;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    private String role;
 
     public void setImg(String img) {
         this.img = img;

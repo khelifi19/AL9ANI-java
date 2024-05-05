@@ -10,14 +10,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import modeles.user.UserModel;
 import service.user.UserService;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -44,7 +50,8 @@ public class SignUpController implements Initializable {
 
     @FXML
     private Hyperlink forgot;
-
+    @FXML
+    private TextField picture_input;
     @FXML
     private TextField lastNameFieldS;
 
@@ -95,6 +102,10 @@ public class SignUpController implements Initializable {
         String email = emailFieldS.getText();
         String firstName = FirstNameS.getText();
         String lastName = lastNameFieldS.getText();
+        String picturePath = picture_input.getText();
+
+        Path path = Paths.get(picturePath);
+        String fileName = path.getFileName().toString();
 
         // Validate email
         if (email.isEmpty() || !email.matches("^[\\w.-]+@esprit\\.tn$")) {
@@ -122,11 +133,18 @@ public class SignUpController implements Initializable {
         newUser.setPassword(password);
         newUser.setLastName(lastName);
         newUser.setUsername(username);
+        newUser.setImg(fileName);
+        newUser.setRole("USER");
 
         try {
             if (check) {
 
-
+                Path destinationPath = Paths.get("src/main/resources/user/img/profilePictures", fileName);
+                try {
+                    Files.copy(path, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             // Attempt to create the new user
             us.create(newUser);
          UserService.setCurrentlyLoggedInUser(newUser);
@@ -166,7 +184,7 @@ public class SignUpController implements Initializable {
                 return;
 
             } else {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting2.fxml"));
                 Parent root = loader.load();
               ProfileSetting profileSetting = loader.getController();
                 profileSetting.setUserInformation(username);
@@ -180,7 +198,7 @@ public class SignUpController implements Initializable {
                 stage.show();
 
                 // Set stage borderless
-                stage.initStyle(StageStyle.UNDECORATED);
+
 
                 // Drag it here
                 root.setOnMousePressed(mouseEvent -> {
@@ -201,7 +219,21 @@ public class SignUpController implements Initializable {
         }
     }
 
-
+    public void upload(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload your profile picture");
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            String fileName = selectedFile.getName().toLowerCase();
+            if (fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                picture_input.setText(selectedFile.getPath());
+            } else {
+                System.out.println("Invalid file format. Please select a PNG or JPG file.");
+            }
+        } else {
+            System.out.println("No file selected");
+        }
+    }
     @FXML
     public void login(ActionEvent event) throws IOException, SQLException {
 
@@ -249,9 +281,12 @@ public class SignUpController implements Initializable {
                 return;
             }
             if (isValid) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting.fxml"));
+                UserModel newUser= us.readUser(username);
+                UserService.setCurrentlyLoggedInUser(newUser);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting2.fxml"));
                 Parent root = loader.load();
                 ProfileSetting profileSetting = loader.getController();
+
                 try {
                     profileSetting.setUserInformation(username);
                 } catch (SQLException e) {

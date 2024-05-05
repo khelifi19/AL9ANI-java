@@ -85,65 +85,6 @@
             <Image url="@assets/images.png" />
          </image>
       </ImageView>
-      <VBox layoutY="123.0" prefHeight="544.0" prefWidth="100.0" style="-fx-background-color: f41b3b; -fx-background-radius: 15 0 0 15;">
-         <children>
-            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-            <Button fx:id="btnOverview" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="83.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Overview" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/cat.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="userb" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Users" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/utilisateur.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="uberB" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/icons8_Car_52px_2.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="etabB" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/icons8_Home_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="eventB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/calendar_2693507.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="recB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="87.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/img/write_10215922.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </VBox>
       <Button fx:id="ReponseB" layoutX="1093.0" layoutY="32.0" mnemonicParsing="false" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Reponse" />
     </children>
 </AnchorPane>

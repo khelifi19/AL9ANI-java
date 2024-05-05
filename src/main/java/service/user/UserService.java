@@ -61,7 +61,7 @@ public class UserService implements IService <UserModel>{
             ps.setString(1, username);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new UserModel(
+                    UserModel u=   new UserModel(
                             rs.getInt("id_user"),
                             rs.getString("username"),
                             rs.getString("email"),
@@ -70,7 +70,10 @@ public class UserService implements IService <UserModel>{
                             rs.getString("password")
 
 
-                    );
+
+
+                    ); u.setImg(rs.getString("img"));
+                    return u;
                 }
             }
         }
@@ -82,7 +85,7 @@ public class UserService implements IService <UserModel>{
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return new UserModel(
+                  UserModel u=   new UserModel(
                             rs.getInt("id_user"),
                             rs.getString("username"),
                             rs.getString("email"),
@@ -91,7 +94,10 @@ public class UserService implements IService <UserModel>{
                             rs.getString("password")
 
 
-                    );
+
+
+                    ); u.setImg(rs.getString("img"));
+                    return u;
                 }
             }
         }
@@ -106,14 +112,16 @@ public class UserService implements IService <UserModel>{
     }
     @Override
     public boolean create(UserModel userModel) throws SQLException {
-        String query = "INSERT INTO users (username, password, email, firstName, lastName) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (username, email, firstName, lastName, password,role,img) VALUES (?, ?, ?, ?, ?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, userModel.getUsername());
             userModel.setPassword(PasswordHasher.hashPassword(userModel.getPassword()));
-            statement.setString(2, userModel.getPassword());
-            statement.setString(3, userModel.getEmail());
-            statement.setString(4, userModel.getFirstName());
-            statement.setString(5, userModel.getLastName());
+            statement.setString(5, userModel.getPassword());
+            statement.setString(2, userModel.getEmail());
+            statement.setString(3, userModel.getFirstName());
+            statement.setString(4, userModel.getLastName());
+            statement.setString(6, userModel.getRole());
+            statement.setString(7, userModel.getImg());
             int rowsAffected = statement.executeUpdate();
             return rowsAffected > 0; // If any rows were affected, the user was created successfully
         } catch (SQLException e) {
@@ -188,14 +196,16 @@ public class UserService implements IService <UserModel>{
 
     @Override
     public void update(UserModel userModel) throws SQLException {
-        String sql = "update users set firstname = ?, lastname = ?, password = ?, email = ?, username = ? where id_user= ?";
+        String sql = "update users set firstname = ?, lastname = ?, password = ?, email = ?, username = ? ,role = ?, img = ? where id_user= ?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, userModel.getFirstName());
         ps.setString(2, userModel.getLastName());
         ps.setString(3, userModel.getPassword());
         ps.setString(4, userModel.getEmail());
         ps.setString(5, userModel.getUsername());
-        ps.setInt(6, userModel.getuserId());
+        ps.setString(6, userModel.getRole());
+        ps.setString(7, userModel.getImg());
+        ps.setInt(8, userModel.getuserId());
         ps.executeUpdate();
     }
 
