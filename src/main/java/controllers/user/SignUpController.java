@@ -156,7 +156,7 @@ public class SignUpController implements Initializable {
             FirstNameS.clear();
 
             // Navigate to the appropriate page based on the user role
-            if (newUser.getUsername().equals("admin")) {
+            if (newUser.getRole().equals("ADMIN")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
                 Parent root = null;
                 try {

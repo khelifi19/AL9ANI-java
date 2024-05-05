@@ -1,5 +1,7 @@
 package com.example.al9ani.test;
 
+import controllers.user.HomeController;
+import controllers.user.Navbar;
 import controllers.user.ProfileSetting;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,19 +47,19 @@ public class Main extends Application {
                     return;
                 }else {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/profilesetting2.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/HomePage.fxml"));
                     Parent root= null;
                     try {
                         root = loader.load();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    ProfileSetting profileSetting = loader.getController();
-                   try {
+                    HomeController profileSetting = loader.getController();
+                 /* try {
                         profileSetting.setUserInformation(username);
                     } catch (SQLException e) {
                         System.err.println(e);
-                    }
+                    }*/
                     // Set the scene to the primary stage
                     Scene scene = new Scene(root);
 

@@ -16,7 +16,7 @@
 <AnchorPane prefHeight="689.0" prefWidth="984.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReponsebackController">
    <children>
       <ListView fx:id="reponse" layoutX="118.0" layoutY="82.0" prefHeight="595.0" prefWidth="584.0" />
-      <Pane layoutX="710.0" layoutY="82.0" prefHeight="572.0" prefWidth="332.0" styleClass="chosen-fruit-card">
+      <Pane layoutX="704.0" layoutY="94.0" prefHeight="572.0" prefWidth="332.0" style="-fx-background-color: f41b3b;" styleClass="chosen-fruit-card">
          <children>
             <Label fx:id="fruitNameLable11" layoutX="14.0" layoutY="21.0" prefHeight="44.0" prefWidth="293.0" textFill="#faeeee">
                <font>
@@ -37,9 +37,9 @@
                </children>
             </Pane>
             <TextField fx:id="text" layoutX="50.0" layoutY="119.0" prefHeight="34.0" prefWidth="210.0" promptText="Enter text " />
-            <Button layoutX="14.0" layoutY="443.0" mnemonicParsing="false" onAction="#add" prefHeight="34.0" prefWidth="73.0" style="-fx-background-color: green;" text="add" textFill="WHITE" />
-            <Button layoutX="98.0" layoutY="443.0" mnemonicParsing="false" onAction="#update" style="-fx-background-color: blue;" text="update" textFill="WHITE" />
-            <Button layoutX="206.0" layoutY="443.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: red;" text="delete" textFill="WHITE" />
+            <Button layoutX="45.0" layoutY="439.0" mnemonicParsing="false" onAction="#add" prefHeight="34.0" prefWidth="73.0" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="add" textFill="WHITE" />
+            <Button layoutX="125.0" layoutY="443.0" mnemonicParsing="false" onAction="#update" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="update" textFill="WHITE" />
+            <Button layoutX="206.0" layoutY="443.0" mnemonicParsing="false" onAction="#delete" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="delete" textFill="WHITE" />
             <ComboBox fx:id="recid" layoutX="45.0" layoutY="263.0" prefHeight="34.0" prefWidth="225.0" />
          </children>
       </Pane>

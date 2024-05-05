@@ -2,42 +2,129 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="743.0" prefWidth="1682.0" styleClass="background" stylesheets="@../../../style/moderstyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationController">
-   <!-- This button should be placed appropriately within your existing FXML layout -->
-   <Button fx:id="navigateToResponseButton" onAction="#navigateToResponse" text="Go to Responses" />
-   <Button id="Button" fx:id="backToDashboardButton" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" onAction="#navigateToResponse" prefHeight="42.0" prefWidth="80.0" stylesheets="@../../../../../../../../../Cv/livcommande/src/main/resources/livcom/livcommande/css/style.css" text="Back">
-      <graphic>
-         <Label text="←" />
-      </graphic>
-   </Button>
-   <Button fx:id="back" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#navigateToResponse" text="Back" />
-
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.reclamation.ReclamationController">
    <children>
-      <Label layoutX="14.0" layoutY="121.0" prefHeight="35.0" prefWidth="292.0" styleClass="page-title" text="Gestion des reclamations">
-         <font> <Font name="System Bold Italic" size="20.0" /></font>
-      </Label>
-      <TextField fx:id="searchField" layoutX="332.0" layoutY="121.0" onAction="#search" prefHeight="46.0" prefWidth="306.0" promptText="Search by object" styleClass="sear" stylesheets="@../../../style/moderstyle.css" />
-
-
-      <ScrollPane layoutX="18.4" layoutY="176.0" prefHeight="558.0" prefWidth="1640.0" styleClass="card-image" stylesheets="@../../../style/moderstyle.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="176.0">
-         <content>
-            <TilePane fx:id="myTilePane" hgap="20" stylesheets="@../../../style/modern-style.css" vgap="20" />
-         </content>
-      </ScrollPane>
-      <AnchorPane id="topBar" layoutY="-3.0" prefHeight="90.0" prefWidth="1665.0" styleClass="top-bar">
-         <children>
-            <Label layoutX="963.0" layoutY="26.0" prefHeight="22.0" prefWidth="200.0" styleClass="header-label" text="User Account" textFill="#FFFFFF" />
-
-            <Label layoutX="37.0" layoutY="26.0" prefHeight="22.0" prefWidth="60.0" styleClass="header-label" text="Lang:" textFill="#FFFFFF" />
-            <Label layoutX="83.0" layoutY="26.0" prefHeight="22.0" prefWidth="40.0" styleClass="header-label" text="EN" textFill="#FFFFFF" underline="true" />
-            <ImageView fitHeight="60.0" fitWidth="83.0" layoutX="1063.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/images.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <BorderPane>
+         <center>
+            <AnchorPane>
+               <children>
+                  <AnchorPane layoutX="-14.0" layoutY="2.0" prefHeight="743.0" prefWidth="1682.0">
+                     <!-- This button should be placed appropriately within your existing FXML layout -->
+                     <Button fx:id="navigateToResponseButton" layoutX="177.0" layoutY="106.0" onAction="#navigateToResponse" text="Go to Responses" />
+                     <Button id="Button" fx:id="backToDashboardButton" layoutX="76.0" layoutY="85.0" mnemonicParsing="false" onAction="#navigateToResponse" prefHeight="42.0" prefWidth="80.0" stylesheets="@style/style.css" text="Back">
+                        <graphic>
+                           <Label text="←" />
+                        </graphic>
+                     </Button>
+                     <Button fx:id="back" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#navigateToResponse" text="Back" />
+                  
+                                       <children>
+                        <Label layoutX="14.0" layoutY="121.0" prefHeight="35.0" prefWidth="292.0" styleClass="page-title" text="Gestion des reclamations">
+                           <font> <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="searchField" layoutX="332.0" layoutY="121.0" onAction="#search" prefHeight="46.0" prefWidth="306.0" promptText="Search by object" styleClass="sear" stylesheets="@style/moderstyle.css" />
+                  
+                                    
+                                          <ScrollPane layoutX="18.4" layoutY="176.0" prefHeight="558.0" prefWidth="1640.0" styleClass="card-image" stylesheets="@style/moderstyle.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="176.0">
+                           <content>
+                              <TilePane fx:id="myTilePane" hgap="20" stylesheets="@style/modern-style.css" vgap="20" />
+                           </content>
+                        </ScrollPane>
+                        <AnchorPane id="topBar" layoutY="-3.0" prefHeight="90.0" prefWidth="1665.0" styleClass="top-bar">
+                           <children>
+                              <Label layoutX="963.0" layoutY="26.0" prefHeight="22.0" prefWidth="200.0" styleClass="header-label" text="User Account" textFill="#FFFFFF" />
+                  
+                                                <Label layoutX="37.0" layoutY="26.0" prefHeight="22.0" prefWidth="60.0" styleClass="header-label" text="Lang:" textFill="#FFFFFF" />
+                              <Label layoutX="83.0" layoutY="26.0" prefHeight="22.0" prefWidth="40.0" styleClass="header-label" text="EN" textFill="#FFFFFF" underline="true" />
+                              <ImageView fitHeight="60.0" fitWidth="83.0" layoutX="1063.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@assets/images.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="745.0" prefWidth="101.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutY="101.0" prefHeight="544.0" prefWidth="100.0" style="-fx-background-color: f41b3b; -fx-background-radius: 15 0 0 15;">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                        <Button fx:id="btnOverview" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="83.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Overview" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/cat.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="userb" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Users" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/utilisateur.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="uberB" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/icons8_Car_52px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="etabB" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/icons8_Home_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="eventB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/calendar_2693507.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="recB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="87.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/write_10215922.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
    </children>
 </AnchorPane>

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;
 
+
 public class UserModel {
     private String username;
 

@@ -98,16 +98,14 @@ public class PayerCourse {
         public void initialize() {
 
 
-            tRetour.setOnAction(event -> redirectToAccueil());
+
 
                 // Définir les actions des boutons
                 btnAnnuler.setOnAction(event -> annulerCourse());
                 btnModifier.setOnAction(event -> modifierCourse());
                 btnPayer.setOnAction(event -> payerCourse());
+            tRetour.setOnAction(event -> redirectToAccueil());
 
-            tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-            tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
-        tAjouter.setOnAction(event -> redirectToReservation());
         }
 
         public void setCourse(Course course) {

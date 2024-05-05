@@ -64,20 +64,21 @@
 
 .combo-box
 {
-    -fx-background-color : #141124;
-    -fx-border-color:  #515658;
+    -fx-background-color : #ff374d;
+    -fx-border-color: #ffc3cd;
     -fx-border-radius: 30;
+    -fx-text-fill: white;
 }
 .combo-box:hover
 {
-    -fx-background-color : #141124;
-    -fx-border-color:  #FFFF;
+    -fx-background-color : #ff374d;
+    -fx-border-color: #ffc3cd;
     -fx-border-radius: 30;
 }
 .combo-box:pressed
 {
-    -fx-background-color : #141124;
-    -fx-border-color:  #FFFF;
+    -fx-background-color : #ff374d;
+    -fx-border-color: #ffc3cd;
     -fx-border-radius: 30;
 }
 

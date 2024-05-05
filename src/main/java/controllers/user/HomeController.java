@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import modeles.user.UserModel;
+import service.user.UserService;
+
+import java.sql.SQLException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,47 +25,28 @@ public class HomeController implements Initializable{
     private Button logout;
     @FXML
     private Label user;
+
     @FXML
-    private TableView<UserModel> usersTable;
+    private Navbar navbarController;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+       // String username = UserService.getCurrentlyLoggedInUser().getUsername();
 
+      /*  try {
+            navbarController.setUserInformation(username);
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exception as needed
+        }*/
 
-        logout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-                try {
-                    // Load the login.fxml file
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
-                    Parent root = loader.load();
-
-                    // Create a new scene with the login page content
-                    Scene scene = new Scene(root);
-
-                    // Get the stage (window) from the button's action event
-                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-                    // Set the scene to the stage and show it
-                    stage.setScene(scene);
-                    stage.setTitle("Login");
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
 
     }
 
 
-    public void setUserInformation(String username){
-        user.setText("Welcome " + username);
-    }
+
 
 }

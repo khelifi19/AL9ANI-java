@@ -1,14 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="user.SideBar"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="262.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.user.Sidebar">
+   <children>
+      <AnchorPane prefHeight="524.0" prefWidth="262.0" style="-fx-background-color: f41b3b;">
+         <children>
+            <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
+               <children>
+                  <Button fx:id="HomePage" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="HomePage" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8_Slider__32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="Betab" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8_Home_32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="Bact" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Actuatlite" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8_Bill_50px_2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="Bevent" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/calendar_2693507.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="uberB" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icons8_Car_52px_2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="reclaB" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/write_10215922.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+            <Pane layoutY="86.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: FFC3CDAD; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="25.0" layoutY="17.0" text="HomePage" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

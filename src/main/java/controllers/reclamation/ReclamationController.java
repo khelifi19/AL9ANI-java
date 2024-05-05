@@ -260,4 +260,7 @@ public class ReclamationController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public void redirectTo(ActionEvent actionEvent) {
+    }
 }

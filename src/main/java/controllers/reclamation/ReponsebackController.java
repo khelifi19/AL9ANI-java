@@ -66,7 +66,7 @@ public class ReponsebackController implements Initializable {
 
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/reclamation/Reclamation.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/reclamation/reclamation.fxml"));
             Parent root = loader.load();
                 ReclamationController homeUber = loader.getController();
             if (homeUber == null) {

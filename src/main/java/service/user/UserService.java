@@ -42,7 +42,7 @@ public class UserService implements IService <UserModel>{
 
                 // Here checkPassword should compare the hashed token with the hashed password stored in the database.
                 if (user != null ) {
-  currentlyLoggedInUser=user;
+  UserService.setCurrentlyLoggedInUser(user);
 
                     return  user.getUsername();
                 }

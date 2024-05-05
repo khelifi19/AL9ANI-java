@@ -69,8 +69,6 @@ public class ReservationCourse {
         tDestination.getItems().addAll("Kfc", "Plan b", "Baguette&Baguette", "33", "716");
         tConfirmer.setOnAction(event -> confirmer());
         tRetour.setOnAction(event -> redirectToAccueil());
-        tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-        tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
     }
 
     @FXML

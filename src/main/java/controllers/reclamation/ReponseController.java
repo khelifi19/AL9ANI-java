@@ -1,6 +1,10 @@
 package controllers.reclamation;
 
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import service.reclamation.*;
 import modeles.reclamation.*;
 import javafx.event.ActionEvent;
@@ -12,7 +16,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.image.Image;
@@ -24,7 +31,9 @@ public class ReponseController implements Initializable {
 
     @FXML
     private TextField text;
+    @FXML
 
+   private Button AjouterReclamation;
     @FXML
     private TilePane myTilePane;
 
@@ -56,6 +65,7 @@ public class ReponseController implements Initializable {
             rs.modifier(reclamation);
         }
     }
+
 
     private boolean isValidInput() {
         if (text.getText().isEmpty() || recid.getValue() == null) {
@@ -122,7 +132,8 @@ public class ReponseController implements Initializable {
 
         // Add the image
         try {
-            FileInputStream inputStream = new FileInputStream("C:/Users/User/Desktop/hapital/Baha/Baha/src/main/resources/com/baha/baha/assets/images.png");
+            Path destinationPath = Paths.get("src/main/resources/reclamation/assets", "images.png");
+            FileInputStream inputStream = new FileInputStream(String.valueOf(destinationPath));
             Image image = new Image(inputStream);
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(100); // Adjust the width of the image as needed
@@ -138,7 +149,23 @@ public class ReponseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ReclamationService rs = new ReclamationService();
+        AjouterReclamation.setOnAction(event -> {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/reclamation/reclamationBack.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ReclamationBackController reclamationController = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage;
+            stage = (Stage) AjouterReclamation.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        });
         load();
     }
 }

@@ -48,15 +48,12 @@ private List<Course> enCours;
 
     @FXML
     public void initialize() {
-        tRetour.setOnAction(event -> redirectToAccueil());
-        tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-        tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
-        ajouterBtn.setOnAction(event -> redirectToReservation());
+
         btnDate.setOnAction(event -> {
             LocalDate selectedDate = btnDate.getValue();
             filterCoursesByDate(selectedDate);
         });
-
+        tRetour.setOnAction(event -> redirectToAccueil());
         refreshCardLayout();
     }
 

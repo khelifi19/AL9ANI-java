@@ -1,5 +1,6 @@
 package controllers.uber;
 
+import controllers.user.HomeController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
@@ -36,12 +37,12 @@ public class HomeUber {
     @FXML
     private void initialize() {
         btnReservez.setOnAction(event -> redirectToReservation());
-       tAjouter.setOnAction(event -> redirectToReservation());
+
         btnCoursesEnCours.setOnAction(event->redirectToCoursesEnCours());
-       tCourseEnCours.setOnAction(event->redirectToCoursesEnCours());
+
         btnHistorique.setOnAction(event->redirectToHistoriqueCourses());
-        tAncienne.setOnAction(event->redirectToHistoriqueCourses());
-        tRetour.setOnAction(event->redirectToDashboard());
+
+
 
     }
 
@@ -150,9 +151,9 @@ public class HomeUber {
 
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/user/homePage.fxml"));
             Parent root = loader.load();
-            AdminController adminController = loader.getController();
+            HomeController adminController = loader.getController();
             if (adminController == null) {
                 System.out.println("Erreur: Impossible de charger le contrôleur de la page d admin.");
                 return;
