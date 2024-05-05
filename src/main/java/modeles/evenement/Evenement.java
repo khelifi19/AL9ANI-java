@@ -1,4 +1,4 @@
-package models;
+package modeles.evenement;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class Evenement {
     private int participants;
     private LocalDate dateDebut;
     private LocalDate dateFin;
-    private List<Pass> passes;
+    private List<models.Pass> passes;
 
     public Evenement(int id, String nom, String type, int participants, LocalDate dateDebut, LocalDate dateFin) {
         this.id = id;
@@ -72,21 +72,21 @@ public class Evenement {
         this.dateFin = dateFin;
     }
 
-    public List<Pass> getPasses() {
+    public List<models.Pass> getPasses() {
         return passes;
     }
 
-    public void setPasses(List<Pass> passes) {
+    public void setPasses(List<models.Pass> passes) {
         this.passes = passes;
     }
 
     // Method to add a pass to the event
-    public void addPass(Pass pass) {
+    public void addPass(models.Pass pass) {
         passes.add(pass);
     }
 
     // Method to remove a pass from the event
-    public void removePass(Pass pass) {
+    public void removePass(models.Pass pass) {
         passes.remove(pass);
     }
 }

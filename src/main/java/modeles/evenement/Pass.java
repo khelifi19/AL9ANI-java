@@ -1,4 +1,7 @@
-package models;
+package modeles.evenement;
+
+import modeles.evenement.Evenement;
+
 public class Pass {
     int id;
     private int prixPass;

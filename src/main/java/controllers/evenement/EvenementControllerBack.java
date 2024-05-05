@@ -1,4 +1,4 @@
-package controllers;
+package controllers.evenement;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -19,8 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.Evenement;
-import services.ServiceEvenement;
+import modeles.evenement.Evenement;
+import service.serviceEvenement.ServiceEvenement;
 
 public class EvenementControllerBack {
 

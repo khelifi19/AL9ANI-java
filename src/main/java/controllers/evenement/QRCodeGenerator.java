@@ -22,10 +22,9 @@ public class QRCodeGenerator {
         int height = 300;
         String format = "png";
 
-        // Construct the event details URL
         String eventDetailsUrl = baseUrl + "/eventdetails/" + eventId;
 
-        // Set up hints for QR code generation
+
         Map<EncodeHintType, Object> hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -46,8 +45,5 @@ public class QRCodeGenerator {
         }
     }
 
-    public static void main(String[] args) {
-        // Example: Generate QR code for event with ID 123 and base URL "http://127.0.0.1:8000"
-        generateQRCode("http://127.0.0.1:8000", 123);
-    }
+
 }

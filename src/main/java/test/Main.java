@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Charger le fichier FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/uber/front/Course/homeUber.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("EvenementBack.fxml"));
 
         // Définir le contenu de la scène
         Scene scene = new Scene(root);

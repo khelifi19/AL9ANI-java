@@ -1,12 +1,12 @@
-package controllers;
+package controllers.evenement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import models.Evenement;
-import services.ServiceEvenement;
+import modeles.evenement.Evenement;
+import service.serviceEvenement.ServiceEvenement;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;

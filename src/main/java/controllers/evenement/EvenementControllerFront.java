@@ -1,4 +1,4 @@
-package controllers;
+package controllers.evenement;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.Evenement;
-import services.ServiceEvenement;
+import modeles.evenement.Evenement;
+import service.serviceEvenement.ServiceEvenement;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
