@@ -95,9 +95,7 @@ public class ModifierCourse {
         afficherInformationsCourse();
         tConfirmer.setOnAction(event -> confirmer());
         tRetour.setOnAction(event -> redirectToAccueil());
-        tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-        tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
-        ajouterBtn.setOnAction(event -> redirectToReservation());
+
     }
 
     @FXML
@@ -232,7 +230,7 @@ public class ModifierCourse {
             }
 
             Scene scene = new Scene(root);
-            Stage stage = (Stage) tCourseEnCours.getScene().getWindow();
+            Stage stage = (Stage) tConfirmer.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
             System.out.println("Redirection réussie !");

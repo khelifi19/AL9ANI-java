@@ -7,8 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import modeles.evenement.Evenement;
-import service.serviceEvenement.ServiceEvenement;
+import modeles.evenement.*;
+import service.serviceEvenement.*;
 import java.awt.event.ActionEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-import controllers.IcsGenerator;
+import controllers.evenement.*;
 
 public class EvenementControllerUser {
 
@@ -69,21 +69,18 @@ public class EvenementControllerUser {
                         setText(null);
                         setGraphic(null);
                     } else {
-                        // Display all event details
                         setText("Nom: " + evenement.getNom() + "\n" +
                                 "Type: " + evenement.getType() + "\n" +
                                 "Participants: " + evenement.getParticipants() + "\n" +
                                 "Date début: " + evenement.getDateDebut() + "\n" +
                                 "Date fin: " + evenement.getDateFin());
 
-                        // Create buttons
                         Button qrButton = new Button("Plus d'informations");
                         qrButton.setOnAction(event -> generateAndShowQRCode(evenement));
 
                         Button addToCalendarButton = new Button("Ajouter au calendrier");
                         addToCalendarButton.setOnAction(event -> addToCalendar(evenement));
 
-                        // Create a horizontal box to hold the buttons
                         HBox buttonBox = new HBox(qrButton, addToCalendarButton);
                         buttonBox.setSpacing(10);
 
@@ -99,11 +96,11 @@ public class EvenementControllerUser {
     private void addToCalendar(Evenement evenement) {
         try {
             String userHome = "C:\\Users\\ozzy\\Desktop";
-            String filePath = userHome + "/event.ics";
+            String filePath = userHome + "/addEventToCal.ics";
             IcsGenerator.generateIcsFile(evenement, filePath);
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Event added to calendar successfully!");
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Evenement ajouté avec sucess !");
         } catch (IOException e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to add event to calendar.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Error.");
         }
     }
 
@@ -118,7 +115,7 @@ public class EvenementControllerUser {
     }
     private void generateAndShowQRCode(Evenement evenement) {
         try {
-            byte[] qrCodeImage = QRCodeGenerator.generateQRCode("http://127.0.0.1:8000/eventdetails", evenement.getId());
+            byte[] qrCodeImage = QRCodeGenerator.generateQRCode("http://127.0.0.1:8000", evenement.getId());
 
             InputStream inputStream = new ByteArrayInputStream(qrCodeImage);
             Image qrCode = new Image(inputStream);

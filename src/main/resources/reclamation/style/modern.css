@@ -1,0 +1,53 @@
+.page-title {
+    -fx-text-fill: #ff0000; /* Red text color */
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.top-bar {
+    -fx-background-color: #ff0000; /* Red background color */
+    -fx-padding: 10px 20px;
+    -fx-alignment: center-left;
+}
+
+.header-label {
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-font-size: 16px;
+}
+/* Apply styles when the search TextField is focused */
+
+.text-field:focused {
+    -fx-border-color: #ff0000; /* Red border color when focused */
+    -fx-border-width: 1.5px; /* Border width when focused */
+}
+.card-style {
+    -fx-background-color: #ffcccc; /* Light red background color */
+    -fx-border-color: #ff0000; /* Red border color */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.16), 10, 0, 0, 10);
+}
+
+.card-image {
+    -fx-background-color: #ffcccc; /* Light red background color */
+}
+
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 5);
+}
+/* Apply styles to the search TextField */
+.text-field {
+    -fx-background-color: #f2f2f2; /* Background color */
+    -fx-border-color: #cccccc; /* Border color */
+    -fx-border-radius: 5px; /* Border radius */
+    -fx-prompt-text-fill: #999999; /* Color of the prompt text */
+}
+
+/* Apply styles when the search TextField is focused */
+.text-field:focused {
+    -fx-border-color: #0078d4; /* Border color when focused */
+    -fx-border-width: 1.5px; /* Border width when focused */
+}

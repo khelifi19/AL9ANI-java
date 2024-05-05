@@ -1,0 +1,111 @@
+/* style.css - Place this in the same directory as your FXML file or adjust the path accordingly */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-base: #ffffff;
+}
+
+
+
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #c73030;
+}
+
+.rectangle {
+    -fx-fill: #ffd6d6;
+    -fx-stroke: #c73030;
+}
+
+
+
+
+
+.scroll-bar:vertical > .thumb {
+    -fx-background-color: #c73030;
+}
+.scroll-bar:horizontal > .thumb {
+    -fx-background-color: #ffffff;
+}
+.text-field:hover {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0, 1, 2;
+}
+
+
+.chosen-fruit-card{
+    -fx-background-color: #c73030;
+    -fx-background-radius: 30;
+}
+
+.card {
+    -fx-padding: 10px;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 10);
+}
+
+.card:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.list-cell {
+    -fx-padding: 10px;
+}
+.card {
+    -fx-padding: 10px;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 10);
+}
+
+.card-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.card-text {
+    -fx-font-size: 12px;
+}
+
+.list-view {
+    -fx-background-color: transparent;
+}
+.card-style {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.16), 10, 0, 0, 10);
+}
+
+.card {
+    -fx-padding: 15px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 5px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 10);
+}
+
+.card-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.card-text {
+    -fx-font-size: 14px;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}

@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import modeles.uber.Course;
 import modeles.uber.Voiture;
+import modeles.user.UserModel;
 import service.uber.CourseDAO;
 import service.uber.VoitureDAO;
 
@@ -68,8 +69,6 @@ public class ReservationCourse {
         tDestination.getItems().addAll("Kfc", "Plan b", "Baguette&Baguette", "33", "716");
         tConfirmer.setOnAction(event -> confirmer());
         tRetour.setOnAction(event -> redirectToAccueil());
-        tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-        tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
     }
 
     @FXML
@@ -119,15 +118,23 @@ public class ReservationCourse {
 
         // Création de la nouvelle course
         Course nouvelleCourse = new Course();
+        UserModel user=new UserModel();
+        user.setId(53);
         nouvelleCourse.setDate(selectedDate.atStartOfDay());
         nouvelleCourse.setDepart(depart);
         nouvelleCourse.setDestination(destination);
         nouvelleCourse.setNbPersonne(nbPassagers);
-        nouvelleCourse.setPrix(nbPassagers * 23);
+  nouvelleCourse.setUser(user);
+
+       float prix=50;
+        float frais_passagers= (float) (nbPassagers*0.5);
+        float frais_chauffeur=10;
+        float frais_vehicule= typeVehicule == "Bus" ?50 :30;
+        float total=frais_vehicule+frais_chauffeur+frais_passagers+prix;
+        nouvelleCourse.setPrix(total);
         nouvelleCourse.setVoiture(voiture);
 
-        // Ajout de la nouvelle course dans la base de données
-        courseDAO.save(nouvelleCourse);
+
 
         // Redirection vers le paiement.fxml
         try {

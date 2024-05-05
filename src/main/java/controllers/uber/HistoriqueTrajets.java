@@ -45,9 +45,6 @@ public class HistoriqueTrajets {
     public void initialize() {
 
         tRetour.setOnAction(event -> redirectToAccueil());
-        tCourseEnCours.setOnAction(event -> redirectToCourseEnCours());
-        tAncienne.setOnAction(event -> redirectToHistoriqueCourses());
-        ajouterBtn.setOnAction(event -> redirectToReservation(null));
         refreshCardLayout();
     }
 

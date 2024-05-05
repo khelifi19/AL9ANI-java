@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="360.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EvenementControllerBack">
+<AnchorPane prefHeight="360.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementControllerBack">
     <children>
         <!-- Form components -->
         <Text layoutX="172.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />

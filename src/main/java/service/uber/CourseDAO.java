@@ -2,11 +2,13 @@ package service.uber;
 
 import modeles.uber.Course;
 import modeles.uber.Voiture;
+import service.user.UserService;
 import utils.DBConnection;
 import view.uber.ICourse;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,14 +80,15 @@ public class CourseDAO implements ICourse {
 
     @Override
     public void save(Course course) {
-        String query = "INSERT INTO course (destination, depart, nb_personne, date, prix, voiture_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO course (destination, depart, nb_personne, date, prix, voiture_id,userID) VALUES (?, ?, ?, ?, ?, ?,?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, course.getDestination());
             statement.setString(2, course.getDepart());
             statement.setInt(3, course.getNbPersonne());
             statement.setTimestamp(4, Timestamp.valueOf(course.getDate()));
             statement.setDouble(5, course.getPrix());
-            statement.setInt(6, course.getVoiture().getId()); // Ajout de l'ID de la voiture
+            statement.setInt(6, course.getVoiture().getId());
+            statement.setInt(7, course.getUser().getuserId());// Ajout de l'ID de la voiture
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,19 +117,26 @@ public class CourseDAO implements ICourse {
         String query = "DELETE FROM course WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
-            statement.executeUpdate();
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected == 0) {
+                System.out.println("Aucune course avec l'ID " + id + " n'a été trouvée.");
+            } else {
+                System.out.println("Course avec l'ID " + id + " supprimée avec succès.");
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Une erreur est survenue lors de la suppression de la course avec l'ID " + id + ": " + e.getMessage());
         }
     }
+
 
 
     public List<Course> findCurrentCourses() {
         List<Course> currentCourses = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date >= ?";
+        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date >= ? AND c.userID = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setTimestamp(1, Timestamp.valueOf(now));
+            statement.setInt(2, UserService.getCurrentlyLoggedInUser().getuserId());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();
@@ -157,9 +167,10 @@ public class CourseDAO implements ICourse {
     public List<Course> findHistoricalCourses() {
         List<Course> historicalCourses = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date < ?";
+        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date < ? AND c.userID = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setTimestamp(1, Timestamp.valueOf(now));
+            statement.setInt(2, UserService.getCurrentlyLoggedInUser().getuserId());
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course();
@@ -181,6 +192,39 @@ public class CourseDAO implements ICourse {
             e.printStackTrace();
         }
         return historicalCourses;
+    }
+
+
+    public List<Course> findCurrentCoursesForMonth(ZonedDateTime dateFocus) {
+        List<Course> currentCourses = new ArrayList<>();
+        LocalDateTime startOfMonth = dateFocus.withDayOfMonth(1).toLocalDateTime();
+        LocalDateTime endOfMonth = dateFocus.withDayOfMonth(dateFocus.getMonth().maxLength()).toLocalDateTime();
+
+        String query = "SELECT c.*, v.matricule FROM course c JOIN voiture v ON c.voiture_id = v.id WHERE c.date >= ? AND c.date <= ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setTimestamp(1, Timestamp.valueOf(startOfMonth));
+            statement.setTimestamp(2, Timestamp.valueOf(endOfMonth));
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Course course = new Course();
+                course.setId(resultSet.getInt("id"));
+                course.setDestination(resultSet.getString("destination"));
+                course.setDepart(resultSet.getString("depart"));
+                course.setNbPersonne(resultSet.getInt("nb_personne"));
+                Timestamp timestamp = resultSet.getTimestamp("date");
+                course.setDate(timestamp.toLocalDateTime());
+                course.setPrix(resultSet.getDouble("prix"));
+
+                Voiture voiture = new Voiture();
+                voiture.setMatricule(resultSet.getString("matricule"));
+                course.setVoiture(voiture);
+
+                currentCourses.add(course);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return currentCourses;
     }
 
 }

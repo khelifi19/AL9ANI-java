@@ -1,4 +1,4 @@
-package controllers;
+package controllers.evenement;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -13,10 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.Evenement;
-import models.Pass;
-import services.ServiceEvenement;
-import services.ServicePass;
+import modeles.evenement.*;
+import  service.serviceEvenement.*;
+
 
 import javax.security.auth.callback.Callback;
 import java.awt.event.KeyEvent;

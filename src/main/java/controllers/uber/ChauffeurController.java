@@ -1,23 +1,52 @@
 package controllers.uber;
 
+import controllers.user.dashboardController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import modeles.uber.Chauffeur;
 import service.uber.ChauffeurDAO;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class ChauffeurController {
 
     @FXML
     private Button ajouterButton;
+    @FXML
+    private Button userb;
+    @FXML
+    private Button uberB;
+
+    @FXML
+    private Button etabB;
+
+    @FXML
+    private Button eventB;
+
+    @FXML
+    private Button recB;
+    @FXML
+    private Button btnOverview;
+
+    @FXML
+    private Button btnRetour;
 
     @FXML
     private ToggleButton btnChauffeur;
@@ -61,7 +90,102 @@ public class ChauffeurController {
     public ChauffeurController() {
         this.chauffeurDAO = new ChauffeurDAO();
     }
+    @FXML
+    private void redirectTo(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        String buttonId = clickedButton.getId();
+        System.out.println(buttonId);
+        switch (buttonId) {
+            case "userb" :
 
+                FXMLLoader loa = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
+                Parent ro = null;
+                try {
+                    ro = loa.load();
+                    dashboardController dashboardController = loa.getController();
+                    dashboardController.handleClicks(buttonId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage ps = new Stage();
+                ps.setScene(new Scene(ro));
+
+                ps.initStyle(StageStyle.UNDECORATED);
+
+
+
+                ps.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                break;
+
+            case "uberB":
+                try {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+                    Parent root = loader.load();
+                    AdminController homeUber = loader.getController();
+                    if (homeUber == null) {
+                        System.out.println("Erreur: Impossible de charger le contrôleur de la page d accueil.");
+                        return;
+                    }
+
+                    Scene scene = new Scene(root);
+                    Stage stage;
+                    if (uberB != null) {
+                        stage = (Stage) uberB.getScene().getWindow();
+                    }
+                    else {
+                        System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                        return;
+                    }
+
+                    stage.setScene(scene);
+                    stage.show();
+                    System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
+
+                break;
+            case "etabB":
+
+                break;
+            case "eventB":
+                // Redirection vers la page des événements
+                // Exemple : goToEventPage();
+                break;
+            case "recB":
+                // Redirection vers la page de recommandations
+                // Exemple : goToRecommendationPage();
+                break;
+            case "btnOverview":
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                    dashboardController dashboardController = loader.getController();
+                    dashboardController.handleClicks(buttonId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+
+
+
+                primaryStage.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                break;
+            default:
+                // Action par défaut si aucun cas ne correspond
+                break;
+        }
+    }
     @FXML
     public void initialize() {
         this.chauffeursList = FXCollections.observableArrayList(chauffeurDAO.findAll());
@@ -69,9 +193,12 @@ public class ChauffeurController {
         rafraichirTableView();
         recherche();
 
+        btnRetour.setOnAction(event -> redirectToAccueil());
         ajouterButton.setOnAction(event -> {
             afficherPopupAjoutChauffeur();
         });
+
+
     }
 
     private void initializeTableView() {
@@ -86,41 +213,47 @@ public class ChauffeurController {
     }
 
     private void setupActionButtonsCellFactory() {
-        tActions.setCellFactory(new Callback<TableColumn<Chauffeur, Void>, TableCell<Chauffeur, Void>>() {
+        tActions.setCellFactory(param -> new TableCell<Chauffeur, Void>() {
+            private final Button modifierButton = new Button();
+            private final Button supprimerButton = new Button();
+            private final ImageView modifierIcon = new ImageView(new Image(getClass().getResourceAsStream("/uber/dash/Img/update.png")));
+            private final ImageView supprimerIcon = new ImageView(new Image(getClass().getResourceAsStream("/uber/dash/Img/supprimer.png")));
+
+            {
+                modifierIcon.setFitWidth(49);
+                modifierIcon.setFitHeight(25);
+                modifierButton.setGraphic(modifierIcon);
+                supprimerIcon.setFitWidth(49);
+                supprimerIcon.setFitHeight(25);
+                supprimerButton.setGraphic(supprimerIcon);
+
+                modifierButton.setOnAction(event -> {
+                    Chauffeur chauffeur = getTableView().getItems().get(getIndex());
+                    afficherPopupModificationChauffeur(chauffeur);
+                });
+
+                supprimerButton.setOnAction(event -> {
+                    Chauffeur chauffeur = getTableView().getItems().get(getIndex());
+                    boolean confirmDelete = showAlert("Confirmation", "Êtes-vous sûr de vouloir supprimer ce chauffeur ?");
+                    if (confirmDelete) {
+                        chauffeurDAO.delete(chauffeur.getId());
+                        rafraichirTableView();
+                        System.out.println("Chauffeur supprimé : " + chauffeur);
+                    }
+                });
+            }
+
             @Override
-            public TableCell<Chauffeur, Void> call(TableColumn<Chauffeur, Void> param) {
-                return new TableCell<Chauffeur, Void>() {
-                    private final Button modifierButton = new Button("Modifier");
-                    private final Button supprimerButton = new Button("Supprimer");
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
 
-                    {
-                        modifierButton.setOnAction(event -> {
-                            Chauffeur chauffeur = getTableView().getItems().get(getIndex());
-                        afficherPopupModificationChauffeur(chauffeur);
-                        });
-
-                        supprimerButton.setOnAction(event -> {
-                            Chauffeur chauffeur = getTableView().getItems().get(getIndex());
-                            boolean confirmDelete = showAlert("Confirmation", "Êtes-vous sûr de vouloir supprimer ce chauffeur ?");
-                            if (confirmDelete) {
-                                chauffeurDAO.delete(chauffeur.getId());
-                                rafraichirTableView();
-                                System.out.println("Chauffeur supprimé : " + chauffeur);
-                            }
-                        });
-                    }
-
-                    @Override
-                    protected void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            HBox buttonsContainer = new HBox(modifierButton, supprimerButton);
-                            setGraphic(buttonsContainer);
-                        }
-                    }
-                };
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox hbox = new HBox(modifierButton, supprimerButton);
+                    hbox.setSpacing(5); // Ajoutez un espacement entre les boutons si nécessaire
+                    setGraphic(hbox);
+                }
             }
         });
     }
@@ -308,6 +441,106 @@ public class ChauffeurController {
             rafraichirTableView();
             System.out.println("Chauffeur modifié : " + modifiedChauffeur);
         });
+
     }
 
+
+        private void redirectToVoiture() {
+            System.out.println("Redirection vers l accueil...");
+
+            try {
+                FXMLLoader loader;
+                loader = new FXMLLoader(getClass().getResource("/uber/dash/voiture/voiture.fxml"));
+                Parent root = loader.load();
+              VoitureController  voitureController = loader.getController();
+                if (voitureController == null) {
+                    System.out.println("Erreur: Impossible de charger le contrôleur de la page de voiture.");
+                    return;
+                }
+
+                Scene scene = new Scene(root);
+                Stage stage;
+                if ( btnVehicule != null) {
+                    stage = (Stage)  btnVehicule.getScene().getWindow();
+                }
+                else {
+                    System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                    return;
+                }
+
+                stage.setScene(scene);
+                stage.show();
+                System.out.println("Redirection réussie !");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erreur lors de la redirection: " + e.getMessage());
+            }
+        }
+
+    private void redirectToCourse() {
+        System.out.println("Redirection vers l accueil...");
+
+        try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/uber/dash/course/course.fxml"));
+            Parent root = loader.load();
+            CourseController  courseController = loader.getController();
+            if (courseController == null) {
+                System.out.println("Erreur: Impossible de charger le contrôleur de la page de course.");
+                return;
+            }
+
+            Scene scene = new Scene(root);
+            Stage stage;
+            if ( btnCourse != null) {
+                stage = (Stage)  btnCourse.getScene().getWindow();
+            }
+            else {
+                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                return;
+            }
+
+            stage.setScene(scene);
+            stage.show();
+            System.out.println("Redirection réussie !");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors de la redirection: " + e.getMessage());
+        }
+    }
+
+
+    private void redirectToAccueil() {
+        System.out.println("Redirection vers la page d'accueil...");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+            Parent root = loader.load();
+            AdminController accueilController = loader.getController();
+            if (accueilController == null) {
+                System.out.println("Erreur: Impossible de charger le contrôleur de la page d'accueil.");
+                return;
+            }
+
+            Scene scene = new Scene(root);
+            Stage stage;
+            if (btnRetour != null) {
+                stage = (Stage) btnRetour.getScene().getWindow();
+            } else {
+                System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                return;
+            }
+
+            stage.setScene(scene);
+            stage.show();
+            System.out.println("Redirection réussie !");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erreur lors de la redirection: " + e.getMessage());
+        }
+    }
+
+
 }
+
+

@@ -1,0 +1,18 @@
+.primary-color{
+    -fx-background-color: white
+;
+
+}
+.secondary-color{
+    -fx-background-color: white ;
+}
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #f41b3b;
+    -fx-text-fill: black;
+;
+}
+button-s:hover{
+    -fx-border-color: #ff374d;
+}

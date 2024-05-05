@@ -1,5 +1,7 @@
 package modeles.uber;
 
+import modeles.user.UserModel;
+
 import java.time.LocalDateTime;
 
 public class Course {
@@ -9,13 +11,23 @@ public class Course {
     private int nbPersonne;
     private LocalDateTime date;
     private double prix;
+
+    public UserModel getUser() {
+        return User;
+    }
+
+    public void setUser(UserModel user) {
+        User = user;
+    }
+
+    private UserModel User;
     private Voiture voiture;
     // Constructeurs
     public Course() {
         // Constructeur par défaut
     }
 
-    public Course(int id, String destination, String depart, int nbPersonne, LocalDateTime date, double prix,Voiture voiture) {
+    public Course(int id, String destination, String depart, int nbPersonne, LocalDateTime date, double prix,Voiture voiture,UserModel User) {
         this.id = id;
         this.destination = destination;
         this.depart = depart;
@@ -23,6 +35,7 @@ public class Course {
         this.date = date;
         this.prix = prix;
         this.voiture=voiture;
+        this.User=User;
     }
 
     // Getters et setters

@@ -1,7 +1,8 @@
 package service.serviceEvenement;
 
-import modeles.evenement.Evenement;
-import modeles.evenement.Pass;
+import modeles.evenement.*;
+import service.serviceEvenement.*;
+
 import utils.DBConnection;
 
 import java.sql.*;

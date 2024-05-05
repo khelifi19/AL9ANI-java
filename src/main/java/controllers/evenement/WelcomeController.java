@@ -1,6 +1,8 @@
-package controllers;
-import models.Evenement;
-import models.Pass;
+package controllers.evenement;
+import modeles.evenement.*;
+import service.serviceEvenement.*;
+
+
 public class WelcomeController {
 
 

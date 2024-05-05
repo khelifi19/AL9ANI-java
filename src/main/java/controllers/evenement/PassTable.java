@@ -1,12 +1,14 @@
-package controllers;
+package controllers.evenement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import models.Pass;
-import services.ServicePass;
+import modeles.evenement.*;
+import service.serviceEvenement.*;
+
+
 
 import java.sql.SQLException;
 import java.util.List;

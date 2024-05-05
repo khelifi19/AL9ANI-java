@@ -4,20 +4,46 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="406.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EvenementListController">
-    <children>
-        <ListView fx:id="evenementListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" />
-        <TextField fx:id="tfNom" layoutX="570.0" layoutY="50.0" promptText="Nom" />
-        <TextField fx:id="tfType" layoutX="570.0" layoutY="100.0" promptText="Type" />
-        <TextField fx:id="tfParticipants" layoutX="570.0" layoutY="150.0" promptText="Participants" />
-        <DatePicker fx:id="dpDateDebut" layoutX="570.0" layoutY="200.0" promptText="Date Début" />
-        <DatePicker fx:id="dpDateFin" layoutX="570.0" layoutY="250.0" promptText="Date Fin" />
-        <Button fx:id="modifierButton" layoutX="583.0" layoutY="317.0" mnemonicParsing="false" onAction="#modifierEvenement" text="Modifier" />
-        <Button fx:id="supprimerButton" layoutX="686.0" layoutY="317.0" mnemonicParsing="false" onAction="#supprimerEvenement" text="Supprimer" />
-      <Text layoutX="50.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher" />
-        <TextField fx:id="rechercherid" layoutX="126.0" layoutY="10.0" onKeyReleased="#filterEvenements" prefHeight="26.0" prefWidth="200.0" />
-    </children>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementListController">
+   <children>
+      <BorderPane>
+         <center>
+            <AnchorPane prefHeight="406.0" prefWidth="772.0">
+                <children>
+                    <ListView fx:id="evenementListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="1.0" green="0.21568627655506134" blue="0.3019607961177826" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </ListView>
+                    <TextField fx:id="tfNom" layoutX="570.0" layoutY="50.0" promptText="Nom" stylesheets="@../user/signUpstyle.css" />
+                    <TextField fx:id="tfType" layoutX="570.0" layoutY="100.0" promptText="Type" stylesheets="@../user/signUpstyle.css" />
+                    <TextField fx:id="tfParticipants" layoutX="570.0" layoutY="150.0" promptText="Participants" stylesheets="@../user/signUpstyle.css" />
+                    <DatePicker fx:id="dpDateDebut" layoutX="570.0" layoutY="200.0" promptText="Date Début" style="-fx-background-color: transparent;" stylesheets="@../user/signUpstyle.css" />
+                    <DatePicker fx:id="dpDateFin" layoutX="570.0" layoutY="250.0" promptText="Date Fin" style="-fx-background-color: transparent;" stylesheets="@../user/signUpstyle.css" />
+                    <Button fx:id="modifierButton" layoutX="583.0" layoutY="317.0" mnemonicParsing="false" onAction="#modifierEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Modifier" />
+                    <Button fx:id="supprimerButton" layoutX="686.0" layoutY="317.0" mnemonicParsing="false" onAction="#supprimerEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Supprimer" />
+                    <Text layoutX="50.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher" />
+                    <TextField fx:id="rechercherid" layoutX="126.0" layoutY="10.0" onKeyReleased="#filterEvenements" prefHeight="26.0" prefWidth="200.0" stylesheets="@../user/signUpstyle.css" />
+                </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="../user/navbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="../user/sideBar.fxml" />
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>

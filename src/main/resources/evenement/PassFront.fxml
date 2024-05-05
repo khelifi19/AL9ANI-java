@@ -4,20 +4,34 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="332.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PassControllerFront">
-    <children>
-        <TextField fx:id="tfType" layoutX="131.0" layoutY="90.0" />
-        <TextField fx:id="tfPrixPass" layoutX="129.0" layoutY="146.0" />
-        <Button fx:id="afficherButton" layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#afficherPassList" text="Afficher" />
-        <ChoiceBox fx:id="eventChoiceBox" layoutX="131.0" layoutY="196.0" prefWidth="150.0" /> <!-- Add ChoiceBox for events -->
 
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-        <Text layoutX="183.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
-        <Text layoutX="180.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-        <Button layoutX="178.0" layoutY="239.0" mnemonicParsing="false" onAction="#ajouterPass" text="Ajouter" />
-      <Button layoutX="296.0" layoutY="239.0" mnemonicParsing="false" onAction="#ajouterEvenement" text="Evenement" />
-
-    </children>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.PassControllerFront">
+   <children>
+      <BorderPane>
+         <center>
+            <AnchorPane prefHeight="332.0" prefWidth="387.0">
+                <children>
+                    <TextField fx:id="tfType" layoutX="131.0" layoutY="90.0" stylesheets="@../user/signUpstyle.css" />
+                    <TextField fx:id="tfPrixPass" layoutX="129.0" layoutY="146.0" stylesheets="@../user/signUpstyle.css" />
+                    <Button fx:id="afficherButton" layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#afficherPassList" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Afficher" />
+                    <ChoiceBox fx:id="eventChoiceBox" layoutX="131.0" layoutY="196.0" prefWidth="150.0" stylesheets="@../user/signUpstyle.css" />
+                    <Text layoutX="183.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+                    <Text layoutX="180.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+                    <Button layoutX="178.0" layoutY="239.0" mnemonicParsing="false" onAction="#ajouterPass" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Ajouter" />
+                  <Button layoutX="296.0" layoutY="239.0" mnemonicParsing="false" onAction="#ajouterEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Evenement" />
+            
+                            </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="../user/navbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="../user/sideBar.fxml" />
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>

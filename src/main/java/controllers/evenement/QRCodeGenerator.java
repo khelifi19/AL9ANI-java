@@ -1,4 +1,4 @@
-package controllers ;
+package controllers.evenement;
 import com.google.zxing.BarcodeFormat;
 
 import com.google.zxing.EncodeHintType;

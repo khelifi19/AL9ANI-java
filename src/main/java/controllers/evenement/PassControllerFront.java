@@ -1,4 +1,4 @@
-package controllers;
+package controllers.evenement;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,10 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.Evenement;
-import models.Pass;
-import services.ServiceEvenement;
-import services.ServicePass;
+import modeles.evenement.*;
+import service.serviceEvenement.*;
+
+
 
 import java.io.IOException;
 import java.sql.SQLException;

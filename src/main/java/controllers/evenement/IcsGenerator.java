@@ -1,6 +1,6 @@
 package controllers.evenement;
 
-import modeles.evenement.Evenement;
+import modeles.evenement.*;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.*;
 import net.fortuna.ical4j.model.component.VEvent;
@@ -39,7 +39,7 @@ import java.time.temporal.Temporal;
                     // Create a new VEvent with start date, end date, and summary
                     VEvent vEvent = new VEvent(startZonedDateTime.toInstant(), endZonedDateTime.toInstant(), evenement.getNom());
 
-                    eventList.add(vEvent);
+                   calendar.add(vEvent);
                     System.out.println("Event added to eventList: " + vEvent);
 
 // Output the calendar to an .ics file

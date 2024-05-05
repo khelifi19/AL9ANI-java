@@ -1,148 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.uber.CourseEnCours">
-   <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="80.0" style="-fx-background-color: FC5C5C;" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="61.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" styleClass="white-background">
-               <image>
-                  <Image url="@../../dash/Img/al9aniwhite.png" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-            </ImageView>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="27.0" prefWidth="279.0">
+
+<AnchorPane prefHeight="735.0" prefWidth="1178.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.uber.CourseEnCours">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1178.0" style="-fx-background-color: f41b3b;">
+         <center>
+            <VBox prefHeight="795.0" prefWidth="1071.0" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="tRetour" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="Retour" textFill="#ebe6e5">
+                  <Button fx:id="tRetour" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: f41b3b;" text="retour" />
+                  <Label text="Mes Courses En Cours">
                      <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Yassine Khelifi">
-                     <font>
-                        <Font name="Al Bayan Bold" size="13.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <VBox prefHeight="740.0" prefWidth="229.0" style="-fx-background-color: FC5C5C;" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="242.0" prefWidth="229.0">
-               <children>
-                  <Label prefHeight="44.0" prefWidth="166.0" text=" Uber" textFill="#e8e5e5">
-                     <font>
-                        <Font name="Al Bayan Bold" size="13.0" />
+                        <Font name="System Bold Italic" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="20.0" top="20.0" />
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox layoutX="10.0" layoutY="94.0" prefHeight="35.0" prefWidth="169.0" spacing="10.0">
+                  <HBox prefHeight="48.0" prefWidth="873.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="91.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../dash/Img/c.jpeg" />
-                           </image>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </ImageView>
+                        <Label text="selectionner une date :" textFill="#e40a0a" />
+                        <DatePicker fx:id="btnDate" prefHeight="26.0" prefWidth="143.0" />
                      </children>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets left="50.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="35.0" prefWidth="169.0" spacing="10.0">
-                     <children>
-                        <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="tCourseEnCours" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" styleClass="selected" stylesheets="@style.css" text="Courses En Cours" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="74.0" prefHeight="35.0" prefWidth="169.0" spacing="10.0">
-                     <children>
-                        <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="tAncienne" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" styleClass="transparent" stylesheets="@style.css" text="Historique Trajets">
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="109.0" prefHeight="35.0" prefWidth="169.0" spacing="10.0">
-                     <children>
-                        <ImageView fitHeight="26.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="ajouterBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="153.0" styleClass="transparent" stylesheets="@style.css" text="Reserver Course">
-                           <HBox.margin>
-                              <Insets top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <ScrollPane prefHeight="410.0" prefWidth="734.0" styleClass="transparent" stylesheets="@style.css">
+                     <content>
+                        <HBox fx:id="cardLayoot" alignment="CENTER" prefHeight="399.0" prefWidth="863.0" spacing="20.0" styleClass="transparent" stylesheets="@style.css">
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
                </children>
             </VBox>
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Separator>
-         </children>
-      </VBox>
-   </left>
-   <center>
-      <VBox prefHeight="795.0" prefWidth="1071.0" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Mes Courses En Cours">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-               </VBox.margin>
-            </Label>
-            <ScrollPane prefHeight="410.0" prefWidth="734.0" styleClass="transparent" stylesheets="@style.css">
-               <content>
-                  <HBox fx:id="cardLayoot" alignment="CENTER" prefHeight="399.0" prefWidth="863.0" spacing="20.0" styleClass="transparent" stylesheets="@style.css">
-                     <padding>
-                        <Insets top="40.0" />
-                     </padding>
-                  </HBox>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
-   </center>
-</BorderPane>
+         </center>
+         <left>
+            <fx:include source="../../../user/sideBar.fxml" />
+         </left>
+         <top>
+            <fx:include source="../../../user/navbar.fxml" />
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

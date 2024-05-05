@@ -4,15 +4,30 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
-<?import models.Pass?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PassTable">
-    <children>
-        <ListView fx:id="passListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" />
-        <TextField fx:id="tfType" layoutX="50.0" layoutY="360.0" promptText="Type" />
-        <TextField fx:id="tfPrixPass" layoutX="200.0" layoutY="360.0" promptText="Prix Pass" />
-        <Button fx:id="modifierButton" layoutX="350.0" layoutY="360.0" onAction="#modifierPass" text="Modifier" />
-        <Button fx:id="supprimerButton" layoutX="450.0" layoutY="360.0" onAction="#supprimerPass" text="Supprimer" />
-    </children>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.PassTable">
+   <children>
+      <BorderPane>
+         <center>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0">
+                <children>
+                    <ListView fx:id="passListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" />
+            
+                    <TextField fx:id="tfType" layoutX="50.0" layoutY="360.0" promptText="Type" stylesheets="@../user/signUpstyle.css" />
+                    <TextField fx:id="tfPrixPass" layoutX="200.0" layoutY="360.0" promptText="Prix Pass" stylesheets="@../user/signUpstyle.css" />
+                    <Button fx:id="modifierButton" layoutX="350.0" layoutY="360.0" onAction="#modifierPass" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Modifier" />
+                    <Button fx:id="supprimerButton" layoutX="450.0" layoutY="360.0" onAction="#supprimerPass" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Supprimer" />
+                </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <fx:include source="../user/navbar.fxml" />
+         </top>
+         <left>
+            <fx:include source="../user/sideBar.fxml" />
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>

@@ -11,7 +11,7 @@ public class Evenement {
     private int participants;
     private LocalDate dateDebut;
     private LocalDate dateFin;
-    private List<models.Pass> passes;
+    private List<Pass> passes;
 
     public Evenement(int id, String nom, String type, int participants, LocalDate dateDebut, LocalDate dateFin) {
         this.id = id;
@@ -72,21 +72,21 @@ public class Evenement {
         this.dateFin = dateFin;
     }
 
-    public List<models.Pass> getPasses() {
+    public List<Pass> getPasses() {
         return passes;
     }
 
-    public void setPasses(List<models.Pass> passes) {
+    public void setPasses(List<Pass> passes) {
         this.passes = passes;
     }
 
     // Method to add a pass to the event
-    public void addPass(models.Pass pass) {
+    public void addPass(Pass pass) {
         passes.add(pass);
     }
 
     // Method to remove a pass from the event
-    public void removePass(models.Pass pass) {
+    public void removePass(Pass pass) {
         passes.remove(pass);
     }
 }
