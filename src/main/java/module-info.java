@@ -13,15 +13,20 @@ module com.example.al9ani {
     requires javafx.graphics;
     requires java.desktop;
     requires itextpdf;
+
     requires com.google.zxing;
     requires com.google.zxing.javase;
-
     requires ical4j.core;
 
+
     exports  modeles.uber;
+
+    opens modeles.evenement to javafx.base;
+    exports  modeles.evenement;
 opens modeles.uber to javafx.base;
     exports com.example.al9ani.test;
-opens com.example.al9ani.test to javafx.fxml;
+    opens com.example.al9ani.test to javafx.fxml;
+
     exports controllers.user;
     opens controllers.user to javafx.fxml;
     exports controllers.uber;

@@ -1,5 +1,7 @@
 package controllers.evenement;
 
+import controllers.uber.AdminController;
+import controllers.user.dashboardController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -8,11 +10,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modeles.evenement.*;
 import  service.serviceEvenement.*;
 
@@ -45,9 +49,136 @@ public class PassControllerBack {
     @FXML
     private TextField rechercherid;
 
+    @FXML
+    private Button uberB;
+
+    @FXML
+    private Button userb;
+    @FXML
+    private Button recB;
+    @FXML
+    private Button etabB;
+
+    @FXML
+    private Button eventB;
+
+    @FXML
+    private Button btnOverview;
+
+    @FXML
+    private void redirectTo(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        String buttonId = clickedButton.getId();
+        System.out.println(buttonId);
+        switch (buttonId) {
+            case "userb" :
+
+                FXMLLoader loa = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
+                Parent ro = null;
+                try {
+                    ro = loa.load();
+                    dashboardController dashboardController = loa.getController();
+                    dashboardController.handleClicks(buttonId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage ps = new Stage();
+                ps.setScene(new Scene(ro));
+
+                ps.initStyle(StageStyle.UNDECORATED);
 
 
 
+                ps.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                break;
+
+            case "uberB":
+                try {
+
+                    FXMLLoader ld = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+                    Parent root = ld.load();
+                    AdminController homeUber = ld.getController();
+                    if (homeUber == null) {
+                        System.out.println("Erreur: Impossible de charger le contrôleur de la page d accueil.");
+                        return;
+                    }
+
+                    Scene scene = new Scene(root);
+                    Stage stage;
+                    if (uberB != null) {
+                        stage = (Stage) uberB.getScene().getWindow();
+                    }
+                    else {
+                        System.out.println("Erreur: Impossible de récupérer la scène actuelle.");
+                        return;
+                    }
+
+                    stage.setScene(scene);
+                    stage.show();
+                    System.out.println("Redirection réussie !");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Erreur lors de la redirection: " + e.getMessage());
+                }
+
+                break;
+            case "etabB":
+
+                break;
+            case "eventB":
+                FXMLLoader le = new FXMLLoader(getClass().getResource("/evenement/EvenementBack.fxml"));
+                Parent rot = null;
+                try {
+                    rot = le.load();
+                    EvenementControllerBack dashboardController = le.getController();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage pis = new Stage();
+                pis.setScene(new Scene(rot));
+
+                pis.initStyle(StageStyle.UNDECORATED);
+
+
+
+                pis.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+
+                break;
+            case "recB":
+                // Redirection vers la page de recommandations
+                // Exemple : goToRecommendationPage();
+                break;
+            case "btnOverview":
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/adminD/dashboard.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                    dashboardController dashboardController = loader.getController();
+                    dashboardController.handleClicks(buttonId);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage primaryStage = new Stage();
+                primaryStage.setScene(new Scene(root));
+
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+
+
+
+                primaryStage.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                break;
+            default:
+                // Action par défaut si aucun cas ne correspond
+                break;
+        }
+    }
 
     @FXML
     void ajouterPass(ActionEvent event) {

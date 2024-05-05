@@ -291,6 +291,8 @@ public class SignUpController implements Initializable {
                     profileSetting.setUserInformation(username);
                 } catch (SQLException e) {
                     System.err.println(e);
+                }finally {
+                    UserService.setCurrentlyLoggedInUser(newUser);
                 }
                 // Set the scene to the primary stage
                 Scene scene = new Scene(root);

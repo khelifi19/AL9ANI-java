@@ -1,5 +1,6 @@
 package controllers.user;
 
+import controllers.evenement.EvenementControllerBack;
 import controllers.reclamation.ReclamationBackController;
 import controllers.reclamation.ReponsebackController;
 import controllers.uber.AdminController;
@@ -226,9 +227,9 @@ System.out.println(buttonId);
             case "uberB":
                 try {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
-                    Parent root = loader.load();
-                    AdminController homeUber = loader.getController();
+                    FXMLLoader ld = new FXMLLoader(getClass().getResource("/uber/dash/admin.fxml"));
+                    Parent root = ld.load();
+                    AdminController homeUber = ld.getController();
                     if (homeUber == null) {
                         System.out.println("Erreur: Impossible de charger le contrôleur de la page d accueil.");
                         return;
@@ -257,8 +258,26 @@ System.out.println(buttonId);
 
                 break;
             case "eventB":
-                // Redirection vers la page des événements
-                // Exemple : goToEventPage();
+                FXMLLoader le = new FXMLLoader(getClass().getResource("/evenement/EvenementBack.fxml"));
+                Parent rot = null;
+                try {
+                    rot = le.load();
+                    EvenementControllerBack dashboardController = le.getController();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage pis = new Stage();
+                pis.setScene(new Scene(rot));
+
+                pis.initStyle(StageStyle.UNDECORATED);
+
+
+
+                pis.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+
                 break;
             case "recB":
                 // Redirection vers la page de recommandations
@@ -352,9 +371,28 @@ System.out.println(buttonId);
             case "etabB":
 
                 break;
-            case "eventB":
-                // Redirection vers la page des événements
-                // Exemple : goToEventPage();
+            case "Bevent":
+                FXMLLoader le = new FXMLLoader(getClass().getResource("/evenement/EvenementBack.fxml"));
+                Parent rot = null;
+                try {
+                    rot = le.load();
+                   EvenementControllerBack dashboardController = le.getController();
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Stage pis = new Stage();
+                pis.setScene(new Scene(rot));
+
+                pis.initStyle(StageStyle.UNDECORATED);
+
+
+
+                pis.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+
+
                 break;
             case "Brecl":
 

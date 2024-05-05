@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -95,9 +97,11 @@ public class EvenementControllerUser {
 
     private void addToCalendar(Evenement evenement) {
         try {
-            String userHome = "C:\\Users\\ozzy\\Desktop";
-            String filePath = userHome + "/addEventToCal.ics";
-            IcsGenerator.generateIcsFile(evenement, filePath);
+            String userHome = "C:\\Users\\kittie\\Desktop\\addEventToCal.ics";
+
+
+
+            IcsGenerator.generateIcsFile(evenement, userHome);
             showAlert(Alert.AlertType.INFORMATION, "Success", "Evenement ajouté avec sucess !");
         } catch (IOException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Error.");

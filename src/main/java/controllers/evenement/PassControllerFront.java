@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modeles.evenement.*;
 import service.serviceEvenement.*;
-
+import service.user.UserService;
 
 
 import java.io.IOException;
@@ -74,6 +74,7 @@ public class PassControllerFront {
 
     @FXML
     void afficherPassList(ActionEvent event) {
+        if(UserService.getCurrentlyLoggedInUser().getRole().equals("GERANT"))
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/PassListFront.fxml"));
             Parent root = loader.load();

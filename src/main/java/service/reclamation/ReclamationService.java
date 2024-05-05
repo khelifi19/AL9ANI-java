@@ -1,6 +1,8 @@
 package service.reclamation;
 
 
+import modeles.user.UserModel;
+import service.user.UserService;
 import utils.DBConnection;
 import modeles.reclamation.*;
 import java.sql.*;
@@ -17,7 +19,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
         try {
             String req = "INSERT INTO reclamation(user_id,objet,text,etat ) VALUES (?,?,?,?) ";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, reclamation.getUserId());
+            pst.setInt(1, UserService.getCurrentlyLoggedInUser().getuserId());
             pst.setString(2, reclamation.getObjet());
             pst.setString(3, reclamation.getText());
             pst.setInt(4, reclamation.getEtat());
@@ -47,7 +49,7 @@ public class ReclamationService implements IReclamation<Reclamation> {
         try {
             String req = "UPDATE reclamation SET user_id = ?, objet = ?, text = ?, etat = ? WHERE id = ?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, reclamation.getUserId());
+            pst.setInt(1, UserService.getCurrentlyLoggedInUser().getuserId());
             pst.setString(2, reclamation.getObjet());
             pst.setString(3, reclamation.getText());
             pst.setInt(4, reclamation.getEtat());

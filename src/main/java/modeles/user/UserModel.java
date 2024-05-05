@@ -1,5 +1,6 @@
 package modeles.user;
 
+
 import utils.DBConnection;
 import utils.user.DataUtils;
 
@@ -16,16 +17,13 @@ public class UserModel {
     private int userId;
    private String password;
    private String email;
-
-    public String getRole() {
-        return role;
-    }
+    private String role;
 
     public void setRole(String role) {
         this.role = role;
     }
 
-    private String role;
+  public String getRole(){return role;}
 
     public void setImg(String img) {
         this.img = img;

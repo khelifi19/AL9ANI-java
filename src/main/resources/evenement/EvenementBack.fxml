@@ -5,41 +5,120 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="360.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementControllerBack">
-    <children>
-        <!-- Form components -->
-        <Text layoutX="172.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-        <TextField fx:id="tfNom" layoutX="110.0" layoutY="44.0" />
 
-        <Text layoutX="172.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-        <TextField fx:id="tfType" layoutX="109.0" layoutY="106.0" />
-
-        <Text layoutX="158.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants" wrappingWidth="78.39998779296866" />
-        <TextField fx:id="tfParticipants" layoutX="109.0" layoutY="165.0" />
-
-        <Button layoutX="156.0" layoutY="298.0" mnemonicParsing="false" onAction="#ajouterEvenement" text="Ajouter" />
-        <DatePicker fx:id="dpDateDebut" layoutX="13.0" layoutY="240.0" prefHeight="26.0" prefWidth="143.0" />
-        <DatePicker fx:id="dpDateFin" layoutX="209.0" layoutY="240.0" prefHeight="26.0" prefWidth="150.0" />
-
-        <Text layoutX="45.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut" wrappingWidth="78.39998779296866" />
-        <Text layoutX="252.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin" wrappingWidth="78.39998779296866" />
-
-        <!-- TableView -->
-        <TableView fx:id="eventTableView" layoutX="398.0" layoutY="16.0" prefHeight="280.0" prefWidth="462.0">
-            <columns>
-                <TableColumn fx:id="colNom" prefWidth="109.5999755859375" text="Nom" />
-                <TableColumn fx:id="colType" prefWidth="81.60000610351562" text="Type" />
-                <TableColumn fx:id="colParticipants" prefWidth="91.199951171875" text="Participants" />
-                <TableColumn fx:id="colDateDebut" prefWidth="90.40008544921875" text="Date début" />
-                <TableColumn fx:id="colDateFin" prefWidth="87.9998779296875" text="Date fin" />
-            </columns>
-        </TableView>
-      <Button layoutX="23.0" layoutY="298.0" mnemonicParsing="false" onAction="#modifierEvenement" text="Modifier" />
-      <Button layoutX="255.0" layoutY="298.0" mnemonicParsing="false" onAction="#supprimerEvenement" text="Supprimer" />
-        <TextField fx:id="rechercherid" layoutX="488.0" layoutY="310.0" prefHeight="26.0" prefWidth="317.0" onKeyReleased="#filterEvenements" />
-      <Text layoutX="398.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher" />
-    </children>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementControllerBack">
+   <children>
+      <BorderPane>
+         <center>
+            <AnchorPane prefHeight="360.0" prefWidth="871.0">
+                <children>
+                    <!-- Form components -->
+                    <Text layoutX="172.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+                    <TextField fx:id="tfNom" layoutX="110.0" layoutY="44.0" stylesheets="@../user/signUpstyle.css" />
+            
+                    <Text layoutX="172.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+                    <TextField fx:id="tfType" layoutX="109.0" layoutY="106.0" stylesheets="@../user/signUpstyle.css" />
+            
+                    <Text layoutX="158.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants" wrappingWidth="78.39998779296866" />
+                    <TextField fx:id="tfParticipants" layoutX="109.0" layoutY="165.0" stylesheets="@../user/signUpstyle.css" />
+            
+                    <Button layoutX="156.0" layoutY="298.0" mnemonicParsing="false" onAction="#ajouterEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Ajouter" />
+                    <DatePicker fx:id="dpDateDebut" layoutX="13.0" layoutY="240.0" prefHeight="26.0" prefWidth="143.0" stylesheets="@../user/signUpstyle.css" />
+                    <DatePicker fx:id="dpDateFin" layoutX="209.0" layoutY="240.0" prefHeight="26.0" prefWidth="150.0" stylesheets="@../user/signUpstyle.css" />
+            
+                    <Text layoutX="45.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut" wrappingWidth="78.39998779296866" />
+                    <Text layoutX="252.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin" wrappingWidth="78.39998779296866" />
+            
+                    <!-- TableView -->
+                    <TableView fx:id="eventTableView" layoutX="398.0" layoutY="16.0" prefHeight="280.0" prefWidth="462.0">
+                        <columns>
+                            <TableColumn fx:id="colNom" prefWidth="109.5999755859375" text="Nom" />
+                            <TableColumn fx:id="colType" prefWidth="81.60000610351562" text="Type" />
+                            <TableColumn fx:id="colParticipants" prefWidth="91.199951171875" text="Participants" />
+                            <TableColumn fx:id="colDateDebut" prefWidth="90.40008544921875" text="Date début" />
+                            <TableColumn fx:id="colDateFin" prefWidth="87.9998779296875" text="Date fin" />
+                        </columns>
+                    </TableView>
+                  <Button layoutX="23.0" layoutY="298.0" mnemonicParsing="false" onAction="#modifierEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Modifier" />
+                  <Button layoutX="255.0" layoutY="298.0" mnemonicParsing="false" onAction="#supprimerEvenement" styleClass="signup-btn" stylesheets="@../user/signUpstyle.css" text="Supprimer" />
+                    <TextField fx:id="rechercherid" layoutX="488.0" layoutY="310.0" onKeyReleased="#filterEvenements" prefHeight="26.0" prefWidth="317.0" stylesheets="@../user/signUpstyle.css" />
+                  <Text layoutX="398.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher" />
+                </children>
+            </AnchorPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="502.0" prefWidth="86.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="10.0" prefHeight="502.0" prefWidth="76.0" style="-fx-background-color: f41b3b; -fx-background-radius: 15 0 0 15;">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                        <Button fx:id="btnOverview" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="83.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Overview" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/cat.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="userb" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Users" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/utilisateur.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="uberB" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="84.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Uber" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/icons8_Car_52px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="etabB" contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Etablissement" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/icons8_Home_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="eventB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="88.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/calendar_2693507.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="recB" contentDisplay="TOP" mnemonicParsing="false" onAction="#redirectTo" prefHeight="66.0" prefWidth="87.0" styleClass="button3" stylesheets="@../user/adminD/fullpackstyling.css" text="Reclamation" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../user/img/write_10215922.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
 </AnchorPane>

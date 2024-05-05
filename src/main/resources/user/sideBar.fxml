@@ -55,9 +55,9 @@
                         <Insets left="40.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
+                  <Button fx:id="Bevent" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#redirectToO" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@adminD/fullpackstyling.css" text="Evenement" textFill="WHITE">
                      <graphic>
-                        <ImageView fx:id="Bevent" fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/calendar_2693507.png" />
                            </image>

@@ -86,11 +86,6 @@
                               </BoxBlur>
                            </effect>
                         </ImageView>
-                        <Label layoutX="17.0" layoutY="263.0" text="Explore your best Local Area" textFill="#f41b3b">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="36.0" />
-                           </font>
-                        </Label>
                         <Pane layoutX="17.0" layoutY="263.0">
                            <effect>
                               <DropShadow blurType="GAUSSIAN" radius="37.1125" width="129.45" />

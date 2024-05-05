@@ -4,11 +4,11 @@ import modeles.evenement.*;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.*;
 import net.fortuna.ical4j.model.component.VEvent;
-import net.fortuna.ical4j.model.property.Summary;
+import net.fortuna.ical4j.validate.CalendarValidatorFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -24,9 +24,13 @@ import java.time.temporal.Temporal;
                 public static void generateIcsFile(Evenement evenement, String filePath) throws IOException {
                     // Create a new ComponentList for events
                     ComponentList<VEvent> eventList = new ComponentList<>();
+// Manually register the CalendarValidatorFactory
+                  //  System.setProperty("ical4j.validation.relaxed", "true");
 
-                    // Create a new calendar with the ComponentList
+// Create a new calendar with relaxed validation
                     Calendar calendar = new Calendar(eventList);
+
+
 
                     // Convert Date to DateTime
                     DateTime startDate = new DateTime(Date.from(evenement.getDateDebut().atStartOfDay(ZoneId.systemDefault()).toInstant()));

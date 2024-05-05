@@ -1,5 +1,7 @@
 package controllers.user;
 
+import controllers.evenement.EvenementControllerFront;
+import controllers.evenement.EvenementControllerUser;
 import controllers.reclamation.ReclamationController;
 import controllers.reclamation.ReponseController;
 import controllers.reclamation.ReponsebackController;
@@ -16,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import service.user.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +32,7 @@ public class Sidebar implements Initializable {
     private Button Betab;
 
     @FXML
-    private ImageView Bevent;
+    private Button Bevent;
 
     @FXML
     private Button HomePage;
@@ -77,20 +80,44 @@ public class Sidebar implements Initializable {
 
                 break;
             case "Bevent":
-                // Redirection vers la page des événements
-                // Exemple : goToEventPage();
+                System.out.println(UserService.getCurrentlyLoggedInUser().getRole());
+                if(UserService.getCurrentlyLoggedInUser().getRole().equals("GERANT")){
+                    System.out.println(UserService.getCurrentlyLoggedInUser().getRole());
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/evenement/EvenementFront.fxml"));
+                    Parent root = loader.load();
+                    EvenementControllerFront evenementControllerUser = loader.getController();
+
+                    Scene scene = new Scene(root);
+                    Stage sa= new Stage();
+
+                    sa.setScene(scene);
+                    sa.show();
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
+                }else{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/evenement/EvenementUser.fxml"));
+                Parent root = loader.load();
+                EvenementControllerUser evenementControllerUser = loader.getController();
+
+                Scene scene = new Scene(root);
+                Stage sa= new Stage();
+
+                sa.setScene(scene);
+                sa.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+                break;}
                 break;
+
             case "reclaB":
 
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/reclamation/reponse.fxml"));
-                Parent root = loader.load();
-                ReponseController reclamationController = loader.getController();
+                FXMLLoader lr = new FXMLLoader(getClass().getResource("/reclamation/reponse.fxml"));
+                Parent r = lr.load();
+                ReponseController reclamationController = lr.getController();
 
-                Scene scene = new Scene(root);
+                Scene sc = new Scene(r);
                 Stage stage;
                 stage = (Stage) reclaB.getScene().getWindow();
-                stage.setScene(scene);
+                stage.setScene(sc);
                 stage.show();
 
                 break;
@@ -102,10 +129,10 @@ public class Sidebar implements Initializable {
                 break;
             case "HomePage":
                 FXMLLoader l = new FXMLLoader(getClass().getResource("/user/HomePage.fxml"));
-                Parent r = l.load();
+                Parent rx = l.load();
                 HomeController HomeController = l.getController();
 
-                Scene s = new Scene(r);
+                Scene s = new Scene(rx);
                 Stage st;
                 st = (Stage) HomePage.getScene().getWindow();
                 st.setScene(s);
@@ -119,10 +146,10 @@ public class Sidebar implements Initializable {
                 Parent ra = la.load();
                 ReponsebackController home = la.getController();
 
-                Scene sa = new Scene(ra);
+                Scene sal = new Scene(ra);
                 Stage sta;
                 sta = (Stage) HomePage.getScene().getWindow();
-                sta.setScene(sa);
+                sta.setScene(sal);
                 sta.show();
                 break;
         }

@@ -73,6 +73,7 @@ public class UserService implements IService <UserModel>{
 
 
                     ); u.setImg(rs.getString("img"));
+                    u.setRole(rs.getString("role"));
                     return u;
                 }
             }
@@ -97,6 +98,7 @@ public class UserService implements IService <UserModel>{
 
 
                     ); u.setImg(rs.getString("img"));
+                    u.setRole(rs.getString("role"));
                     return u;
                 }
             }
