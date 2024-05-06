@@ -108,31 +108,7 @@ public class dashboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        btnSignout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
 
-                try {
-                    us.clearRememberedUser();
-                    // Load the login.fxml file
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
-                    Parent root = loader.load();
-
-                    // Create a new scene with the login page content
-                    Scene scene = new Scene(root);
-
-                    // Get the stage (window) from the button's action event
-                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-                    // Set the scene to the stage and show it
-                    stage.setScene(scene);
-                    stage.setTitle("Login");
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         try {
             users = us.read();
             for (int i = 0; i < users.size(); i++) {

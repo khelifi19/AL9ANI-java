@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import service.user.UserService;
 import utils.user.DataUtils;
 
@@ -19,11 +20,13 @@ import java.sql.SQLException;
 public class Main extends Application {
 
 
-        UserService us= new UserService();
+    public static Stage mainStage;
+    UserService us= new UserService();
         @Override
         public void start(Stage stage) throws IOException {
             String username= us.autoLogin();
 
+            mainStage=stage;
 
             if(username !=null){
                 if (username.equals("admin")) {
@@ -36,6 +39,7 @@ public class Main extends Application {
                     }
 
                     Stage primaryStage = new Stage();
+
                     primaryStage.initStyle(StageStyle.UNDECORATED);
                     primaryStage.setScene(new Scene(root));
 
@@ -71,15 +75,16 @@ public class Main extends Application {
             // Load the FXML file for the sign-in page
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/user/signup.fxml"));
             Parent root = fxmlLoader.load();
+            Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
 
             // Set the scene to the stage and show the stage
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.setScene(scene);
+            primaryStage.initStyle(StageStyle.UNDECORATED);
             // stage.getIcons().add(new Image("view/user/img/favicon.png"));
-            stage.setTitle("Welcome!");
+            primaryStage.setTitle("Welcome!");
 
-            stage.show();
+            primaryStage.show();
 
             // Establish the database connection
 

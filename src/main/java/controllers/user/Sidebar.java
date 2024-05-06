@@ -2,12 +2,15 @@ package controllers.user;
 
 import controllers.evenement.EvenementControllerFront;
 import controllers.evenement.EvenementControllerUser;
+import controllers.front.MainWindowController;
+import controllers.front.post.ShowAllController;
 import controllers.reclamation.ReclamationController;
 import controllers.reclamation.ReponseController;
 import controllers.reclamation.ReponsebackController;
 import controllers.uber.AdminController;
 import controllers.uber.HomeUber;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,13 +19,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import service.user.UserService;
+import utils.etatAct.BadWords;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import com.example.al9ani.test.Main;
+import utils.etatAct.Constants;
+
+import static com.example.al9ani.test.Main.mainStage;
 
 public class Sidebar implements Initializable {
     @FXML
@@ -72,12 +83,16 @@ public class Sidebar implements Initializable {
 
 
                 ps.show();
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+
                 break;
 
 
             case "Betab":
+                Betab.setOnAction(event1 -> {
+                    MainWindowController m=MainWindowController.getInstance();
 
+                    m.afficherEtablissements(event1);
+                });
                 break;
             case "Bevent":
                 System.out.println(UserService.getCurrentlyLoggedInUser().getRole());
@@ -88,22 +103,22 @@ public class Sidebar implements Initializable {
                     EvenementControllerFront evenementControllerUser = loader.getController();
 
                     Scene scene = new Scene(root);
-                    Stage sa= new Stage();
+                    Stage sa= mainStage;
 
                     sa.setScene(scene);
                     sa.show();
-                    ((Node) (event.getSource())).getScene().getWindow().hide();
+
                 }else{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/evenement/EvenementUser.fxml"));
                 Parent root = loader.load();
                 EvenementControllerUser evenementControllerUser = loader.getController();
 
                 Scene scene = new Scene(root);
-                Stage sa= new Stage();
+                Stage sa= mainStage;
 
                 sa.setScene(scene);
                 sa.show();
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+
                 break;}
                 break;
 
@@ -116,12 +131,17 @@ public class Sidebar implements Initializable {
 
                 Scene sc = new Scene(r);
                 Stage stage;
-                stage = (Stage) reclaB.getScene().getWindow();
+                stage = mainStage;
                 stage.setScene(sc);
                 stage.show();
 
                 break;
             case "Bact":
+                System.out.println("Loading bad words ..");
+                BadWords.loadConfigs();
+
+
+                loadFront();
 
 
 
@@ -134,7 +154,7 @@ public class Sidebar implements Initializable {
 
                 Scene s = new Scene(rx);
                 Stage st;
-                st = (Stage) HomePage.getScene().getWindow();
+                st = mainStage;
                 st.setScene(s);
                 st.show();
 
@@ -148,10 +168,74 @@ public class Sidebar implements Initializable {
 
                 Scene sal = new Scene(ra);
                 Stage sta;
-                sta = (Stage) HomePage.getScene().getWindow();
+                sta = mainStage;
                 sta.setScene(sal);
                 sta.show();
                 break;
+        }
+    }
+
+
+
+
+
+
+    public void loadLogin() {
+        loadScene(
+                Constants.FXML_LOGIN,
+                "Connexion"
+        );
+    }
+
+    public void loadFront() {
+        loadScene(
+                Constants.FXML_FRONT_MAIN_WINDOW,
+                ""
+        );
+    }
+
+    public void loadBack() {
+        loadScene(
+                Constants.FXML_BACK_MAIN_WINDOW,
+                ""
+        );
+    }
+public void loadEtab(){
+    loadScene(
+            Constants.FXML_FRONT_MAIN_WINDOW,
+            ""
+    );
+
+
+}
+    public void logout() {
+
+        System.out.println("Deconnexion ..");
+        loadLogin();
+    }
+
+    private void loadScene(String fxmlLink, String title) {
+        try {
+            Stage primaryStage = mainStage;
+
+
+            Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlLink))));
+            scene.setFill(Color.TRANSPARENT);
+
+            //primaryStage.getIcons().add(new Image("app/images/app-icon.png"));
+            primaryStage.setTitle(title);
+            primaryStage.setWidth(1286);
+            primaryStage.setHeight(779);
+            primaryStage.setMinWidth(1100);
+            primaryStage.setMinHeight(700);
+            primaryStage.setScene(scene);
+            primaryStage.setX((Screen.getPrimary().getBounds().getWidth() / 2) - (1100 / 2.0));
+            primaryStage.setY((Screen.getPrimary().getBounds().getHeight() / 2) - (700 / 2.0));
+
+            primaryStage.show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 }

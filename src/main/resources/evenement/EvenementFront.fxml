@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementControllerFront">
+<AnchorPane prefHeight="776.0" prefWidth="1286.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.evenement.EvenementControllerFront">
    <children>
-      <BorderPane>
+      <BorderPane prefHeight="776.0" prefWidth="1286.0">
          <center>
             <AnchorPane prefHeight="332.0" prefWidth="377.0">
                 <children>
@@ -35,12 +34,16 @@
                 </children>
             </AnchorPane>
          </center>
-         <left>
-            <fx:include source="../user/sideBar.fxml" />
-         </left>
          <top>
             <fx:include source="../user/navbar.fxml" />
          </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: f41b3b;" BorderPane.alignment="CENTER">
+               <children>
+                  <fx:include source="../user/sideBar.fxml" />
+               </children>
+            </AnchorPane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

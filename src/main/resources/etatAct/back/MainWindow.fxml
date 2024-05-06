@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="500.0" prefWidth="800" style="-fx-background-color: #EEEEEE;" stylesheets="@../MainStyle.css"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.back.MainWindowController">
+    <AnchorPane minHeight="-Infinity" style="-fx-background-color: #000000;" prefWidth="200"
+                AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0.0">
+        <VBox layoutX="16.0" prefHeight="30.0" spacing="15.0" AnchorPane.bottomAnchor="15.0"
+              AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="15.0">
+            <StackPane>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Al9ani">
+                    <font>
+                        <Font name="System Bold" size="26.0"/>
+                    </font>
+                </Text>
+            </StackPane>
+
+
+            <Button fx:id="btnPosts" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" onAction="#afficherPosts" text="Posts" textFill="WHITE">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+
+            <Button fx:id="btnCommentaires" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" onAction="#afficherCommentaires" text="Commentaires" textFill="WHITE">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+
+            <Button fx:id="btnEtablissements" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" onAction="#afficherEtablissements" text="Etablissements" textFill="WHITE">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+
+            <Button fx:id="btnReservations" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" onAction="#afficherReservations" text="Reservations" textFill="WHITE">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+
+
+        </VBox>
+
+        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                onAction="#logout" styleClass="danger-button" text="Logout" textFill="WHITE"
+                AnchorPane.bottomAnchor="15" AnchorPane.leftAnchor="15" AnchorPane.rightAnchor="15">
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+
+    </AnchorPane>
+
+    <AnchorPane fx:id="content" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #EEEEFF;"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0"/>
+</AnchorPane>

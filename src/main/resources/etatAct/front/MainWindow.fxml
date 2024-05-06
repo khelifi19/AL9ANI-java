@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.front.MainWindowController">
+   <center>
+      <AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="892.0" style="-fx-background-color: #EEEEEE;" stylesheets="@../MainStyle.css">
+      
+                            <AnchorPane fx:id="content" layoutX="10.0" layoutY="10.0" prefHeight="529.0" prefWidth="892.0" style="-fx-background-color: #EEEEFF;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
+      </AnchorPane>
+   </center>
+   <top>
+      <fx:include source="../../user/navbar.fxml" />
+   </top>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: f41b3b;" BorderPane.alignment="CENTER">
+         <children>
+            <fx:include source="../../user/sideBar.fxml" />
+            <Button fx:id="btnPosts" layoutX="78.0" layoutY="267.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#afficherPosts" prefHeight="29.0" prefWidth="56.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnEtablissements" layoutX="74.0" layoutY="219.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#afficherEtablissements" prefHeight="29.0" prefWidth="87.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+   
+                        <Button fx:id="btnReservations" layoutX="63.0" layoutY="525.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#afficherReservations" styleClass="signup-btn" stylesheets="@../../user/signUpstyle.css" text="Reservations" textFill="WHITE">
+                   <font>
+                       <Font name="Segoe UI Bold" size="15.0" />
+                   </font>
+                   <cursor>
+                       <Cursor fx:constant="HAND" />
+                   </cursor>
+               </Button>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

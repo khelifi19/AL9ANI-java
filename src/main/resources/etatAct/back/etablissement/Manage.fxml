@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane styleClass="background-white" stylesheets="@../../MainStyle.css"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.back.etablissement.ManageController">
+    <StackPane layoutY="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Text fx:id="topText" strokeType="OUTSIDE" strokeWidth="0.0" text="texte haut">
+            <font>
+                <Font name="Arial Bold" size="23.0"/>
+            </font>
+        </Text>
+    </StackPane>
+    <VBox layoutX="50.0" layoutY="80.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0"
+          AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="80.0">
+
+        <HBox>
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="nomTF" alignment="TOP_LEFT" promptText="Saisir nom" styleClass="form-control"/>
+            </VBox>
+
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="categorieTF" alignment="TOP_LEFT" promptText="Saisir categorie"
+                           styleClass="form-control"/>
+            </VBox>
+
+        </HBox>
+
+        <HBox>
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="adresseTF" alignment="TOP_LEFT" promptText="Saisir adresse"
+                           styleClass="form-control"/>
+            </VBox>
+
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="emailTF" alignment="TOP_LEFT" promptText="Saisir email" styleClass="form-control"/>
+            </VBox>
+
+        </HBox>
+
+        <HBox>
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <TextField fx:id="telephoneTF" alignment="TOP_LEFT" promptText="Saisir telephone"
+                           styleClass="form-control"/>
+            </VBox>
+
+
+        </HBox>
+
+
+        <HBox>
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User :">
+                    <font>
+                        <Font name="Arial" size="18.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0"/>
+                    </VBox.margin>
+                </Text>
+                <ComboBox fx:id="userCB" promptText="Choisir user" styleClass="form-control"/>
+            </VBox>
+
+
+        </HBox>
+
+    </VBox>
+    <Button fx:id="btnAjout" layoutX="265.0" layoutY="434.0" mnemonicParsing="false" onAction="#manage"
+            prefHeight="51.0" prefWidth="150.0" styleClass="success-button" text="manipulation" textAlignment="CENTER"
+            textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="260.0"
+            AnchorPane.rightAnchor="260.0"/>
+</AnchorPane>
